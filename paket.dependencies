@@ -3,12 +3,9 @@ source https://www.nuget.org/api/v2
 group Common
     source https://api.nuget.org/v3/index.json
     source https://ci.appveyor.com/nuget/fsharp-formatting
-    framework: netstandard2.0
 
     nuget FSharp.Formatting prerelease
-    //nuget FSharp.Formatting.CommandTool prerelease
-    nuget Fue prerelease
-    nuget Scriban
+    nuget Scriban prerelease
 
     // Is this really needed?  Fake couldn't find fsi, that's why it was added.
     nuget FSharp.Compiler.Tools

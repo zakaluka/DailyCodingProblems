@@ -1,6 +1,9 @@
 #r "paket: groupref build //"
 #load "./.fake/build.fsx/intellisense.fsx"
 
+#I @"packages/common/Fue/lib/netstandard2.0"
+#r @"Fue.dll"
+
 #if !FAKE
 #r "netstandard"
 //https://github.com/ionide/ionide-vscode-fsharp/issues/839#issuecomment-396296095
@@ -41,7 +44,7 @@ let outputDirs =
 let tee f x = f x |> ignore; x
 
 Target.create "Clean" (fun _ ->
-    Seq.iter (printfn ".. %A") outputDirs
+    Seq.iter (printfn "Deleting %A") outputDirs
     outputDirs
     |> Shell.deleteDirs
 )

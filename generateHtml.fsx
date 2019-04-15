@@ -3,15 +3,19 @@
 #I @"packages/common/Fue/lib/netstandard2.0"
 #r @"Fue.dll"
 
+#I @"packages\common\Scriban\lib\net40"
+#r "Scriban.dll"
+
 open FSharp.Literate
 open System.IO
-open Fue.Data
-open Fue.Compiler
+open Scriban
+open Scriban.Runtime
+open System.Text.RegularExpressions
 
 // The directory from which we are executing
 let baseDir = __SOURCE_DIRECTORY__
 
-let templateFile = @"template.html"
+let templateFile = Path.Combine(baseDir, @"template.html")
 
 // The source sub-directory
 let source = Path.Combine(baseDir, "src")
@@ -32,19 +36,13 @@ let processSingleProblem d file =
     // https://thinkbeforecoding.com/post/2018/12/07/full-fsharp-blog
     let parse (src:string) =
         let doc =
-            let fsharpCoreDir = @"-I:../../packages/common/FSharp.Formatting/lib -I:../../packages/common/Fue/lib"
+            let fsharpCoreDir = @"-I:../../packages/common/FSharp.Formatting/lib"
             let systemRuntime = "-r:System.Runtime"
 
             if src.EndsWith "fsx" then
                 Literate.ParseScriptFile(
                     path = src,
-                    // output = Path.Combine(od, "output.html"),
-                    // format = OutputKind.Html,
-                    // prefix = @"fs",
-                    // lineNumbers = true,
-                    // references = false,//true,
-                    // generateAnchors = true,
-                    // includeSource = false,//true,
+                    references = false,
                     fsiEvaluator = FSharp.Literate.FsiEvaluator([|fsharpCoreDir|]),
                     formatAgent = FSharp.CodeFormat.CodeFormat.CreateAgent(),
                     compilerOptions = systemRuntime + " " + fsharpCoreDir
@@ -52,13 +50,7 @@ let processSingleProblem d file =
             elif src.EndsWith "md" then
                 Literate.ParseMarkdownFile(
                     path = src,
-                    // output = Path.Combine(od, "output.html"),
-                    // format = OutputKind.Html,
-                    // prefix = @"fs",
-                    // lineNumbers = true,
-                    // references = false,//true,
-                    // generateAnchors = true,
-                    // includeSource = false,//true,
+                    references = false,
                     fsiEvaluator = FSharp.Literate.FsiEvaluator([|fsharpCoreDir|]),
                     formatAgent = FSharp.CodeFormat.CodeFormat.CreateAgent(),
                     compilerOptions = systemRuntime + " " + fsharpCoreDir
@@ -77,29 +69,88 @@ let processSingleProblem d file =
     let format (doc:LiterateDocument) =
         Formatting.format doc.MarkdownDocument true OutputKind.Html
 
+    // Common, parsed file.
+    let parsedFile = file |> parse
+
     // Main body, in HTML
-    let body = file |> parse |> format
+    let body = parsedFile |> format
 
     // Tips (on mouseover), in HTML
-    let tips = file |> parse |> fun d -> d.FormattedTips
+    let tips = parsedFile.FormattedTips
 
-    let compiledHtml =
-        init
-        |> add "page-title" (Path.GetFileNameWithoutExtension(file))
-        |> add "document" body
-        |> add "tooltips" tips
-        |> add "source" "test"
-        // |> fromFile (Path.Combine(baseDir, templateFile))
-        |> fromText @"<div>{{{tooltips}}}</div>"
+    // Source to include in article
+    let src = parsedFile.Source.ToString()
 
-    printfn ".. compiledHtml: %s" compiledHtml
-    ()
+    // Create `ScriptObject` for Scriban settings
+    let createSO toc =
+        let scriptobject = ScriptObject()
+        scriptobject.Add("tooltips", tips)
+        scriptobject.Add("page-title", (Path.GetFileNameWithoutExtension(file)))
+        scriptobject.Add("document", body)
+        scriptobject.Add("source", src)
+        if Option.isSome toc then scriptobject.Add("toc", toc.Value)
+        scriptobject
+
+    // Create final HTML file using Scriban library.
+    let compiledHtml includeTOC =
+        let tp = Template.Parse(File.ReadAllText templateFile, templateFile)
+
+        let context = TemplateContext()
+        context.PushGlobal(createSO includeTOC)
+
+        tp.Render(context)
+
+    // Generate a table of contents using a temporary version of the HTML file
+    // We cannot use `src` because it doesn't contain the link names that the
+    // TOC must point to.
+    let toc () =
+        // Pattern to match
+        // Group 0 = the entire matched string
+        // Group 1 = header level, e.g. 'h1'
+        // Group 2 = href, e.g. 'href="#First-level-heading"'
+        // Group 3 = name, e.g. 'First-level heading'
+        let pattern =
+            @"\<(h[1-6])\>\w*\<a .*class=""anchor""[^>]*(href=[^>]+)\>([^<]*)"
+
+        // Create the regex
+        let regex =
+            Regex(pattern,
+                RegexOptions.IgnoreCase |||
+                RegexOptions.Multiline |||
+                RegexOptions.Compiled)
+
+        // Convenience function to turn a `Match` into a string
+        // NOTE: Entries within a group are 0-based (like normal .NET arrays)
+        let matchToString (m:Match) =
+            // From a header tag, get the number.  E.g. H1 becomes 1
+            let getHeadingLevel (hd:string) = hd.Substring(1) |> int
+            // Create spacing based on header level.  H1 is not indented.
+            let rec spacing acc n =
+                if n <= 1 then acc
+                else spacing (acc + "&nbsp;&nbsp;&nbsp;&nbsp;") (n - 1)
+            let gs = m.Groups
+            sprintf "%s<a %s>%s</a><br>"
+                (gs.[1].Value |> getHeadingLevel |> spacing "")
+                (gs.[2].Value)
+                (gs.[3].Value)
+
+        // Get the matches.  Each match is a successful match of the pattern
+        // and should contain all the groups detailed above.
+        let matches : seq<Match> = regex.Matches(compiledHtml None) |> Seq.cast
+
+        // Create the TOC
+        Seq.fold (fun acc e -> acc + (matchToString e)) "" matches
+
+    // Write the output to the file
+    System.IO.File.WriteAllText(
+        Path.Combine(od, (Path.GetFileNameWithoutExtension(file)) + ".html"),
+        toc () |> Some |> compiledHtml)
 
 // For each sub-directory containing a problem, generate an output HTML file.
 for d in problemDirs do
     let files = Directory.GetFiles d
     if Array.isEmpty files then
-        failwith (sprintf "Found no files in director %s" d)
+        failwith (sprintf "Found no files in directory %s" d)
     elif Array.length files > 1 then
         failwith (sprintf "Found multiple files in directory %s" d)
     else
