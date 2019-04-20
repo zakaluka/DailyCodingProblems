@@ -268,14 +268,92 @@ property {
 ## Additional property-based tests between the algorithms.
 
 Now that the basic smoke tests are out of the way, we can move on to some more serious property-based testing.
+
+The first test will exercise all three algorithms over the full range of integers.
 *)
 
+(*** define-output:proptest1 ***)
 property {
-  let! g = Gen.list (Range.)
+  let! g =
+    Gen.array
+    <| Range.exponential 0 20000
+    <| Gen.int (Range.constant System.Int32.MinValue System.Int32.MaxValue)
+
+  let result = solver g
+  let setResult = setSolver g
+  let sortResult = sortSolver g
+
+  return result = setResult && result = sortResult
 }
+|> Property.print' 5000<tests>
+(*** include-output:proptest1 ***)
 
+(**
+The second test tries various combinations of positive integers over largers arrays.
+*)
 
+(*** define-output:proptest2 ***)
+property {
+  let! g =
+    Gen.array
+    <| Range.exponential 0 20000
+    <| Gen.int (Range.constant 1 1000)
 
+  let result = solver g
+  let setResult = setSolver g
+  let sortResult = sortSolver g
+
+  return result = setResult && result = sortResult
+}
+|> Property.print' 5100<tests>
+(*** include-output:proptest2 ***)
+
+(**
+The third test ensures that 1-element arrays are handled correctly.
+*)
+
+(*** define-output:proptest3 ***)
+property {
+  let! g =
+    Gen.array
+    <| Range.constant 1 1
+    <| Gen.int (Range.constant 1 2)
+
+  let result = solver g
+  let setResult = setSolver g
+  let sortResult = sortSolver g
+
+  return result = setResult && result = sortResult &&
+    (if g.[0] = 1 then result = 2 else result = 1)
+}
+|> Property.print' 5200<tests>
+(*** include-output:proptest3 ***)
+
+(**
+And a final edge-case test with empty arrays to ensure that the algorithms are working correctly.
+*)
+
+(*** define-output:proptest4 ***)
+property {
+  let! g =
+    Gen.array
+    <| Range.constant 0 0
+    <| Gen.int (Range.constant 1 2)
+
+  let result = solver g
+  let setResult = setSolver g
+  let sortResult = sortSolver g
+
+  return result = setResult && result = sortResult && result = 1
+}
+|> Property.print' 5300<tests>
+(*** include-output:proptest4 ***)
+
+(**
+# Performance Testing
+
+Now that the algorithms seem to be working correctly, the next step is to capture some performance metrics.  For this portion, I will be using
+*)
 
 
 
