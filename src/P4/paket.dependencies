@@ -30,6 +30,9 @@ nuget XPlot.Plotly 1.5.0
 nuget XPlot.GoogleCharts 1.5.0
 nuget XPlot.GoogleCharts.Deedle 1.5.0
 
+# Testing
+nuget Hedgehog 0.8.2
+
 # FSharp.Charting - not referenced by FsLab.fsx by default but you can use it
 # nuget FSharp.Charting
 
