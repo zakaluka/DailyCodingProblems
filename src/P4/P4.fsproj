@@ -8,7 +8,8 @@
     <None Include="paket.dependencies" />
     <None Include="build.fsx" />
     <Compile Include="Launch.fs" />
-    <None Include="P4.fsx" />
+    <None Include="P4a.fsx" />
+    <None Include="P4b.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Data" />
