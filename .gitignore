@@ -13,3 +13,4 @@ release.sh
 *.DotSettings.user
 deploy
 src/**/output/
+.ionide/
