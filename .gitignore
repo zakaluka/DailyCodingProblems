@@ -14,3 +14,4 @@ release.sh
 deploy
 src/**/output/
 .ionide/
+target/
