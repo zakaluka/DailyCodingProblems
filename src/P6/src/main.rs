@@ -7,31 +7,36 @@ const EMPTY: usize = 0;
 ///
 /// If this were not a doubly linked list, then Node could contain a reference
 /// to a strongly-typed `tail` instead of just an `usize`.
-#[derive(Debug)]
+#[derive(PartialEq, Debug)]
 struct XORLinkedListNode {
   element: i32,
   both: usize,
 }
 
 impl XORLinkedListNode {
-  fn new(elt: i32) -> XORLinkedListNode {
+  fn new_single(elt: i32) -> XORLinkedListNode {
     XORLinkedListNode {
       element: elt,
       both: EMPTY,
     }
   }
 
-  fn new2(elt: i32, address: usize) -> XORLinkedListNode {
+  fn new(elt: i32, address: usize) -> XORLinkedListNode {
     XORLinkedListNode {
       element: elt,
       both: address,
     }
   }
 
-  fn address(&self) -> usize {
-    usize::from_str_radix(format!("{:p}", self).trim_start_matches("0x"), 16)
-      .unwrap()
-  }
+  //  fn address(&self) -> usize {
+  //    usize::from_str_radix(format!("{:p}", self).trim_start_matches("0x"),
+  // 16)      .unwrap()
+  //  }
+}
+
+fn address<T>(elt: &T) -> usize {
+  usize::from_str_radix(format!("{:p}", elt).trim_start_matches("0x"), 16)
+    .unwrap()
 }
 
 /// This struct represents a collection of nodes, plus additional book-keeping
@@ -43,15 +48,16 @@ impl XORLinkedListNode {
 /// instances somewhere because Rust has a strong concept of ownership. When an
 /// item has no owner and no references, its destructor will automatically be
 /// invoked via the `Drop` trait.
+#[derive(PartialEq, Debug)]
 struct XORLinkedList {
   nodes: Vec<XORLinkedListNode>,
 }
 
 impl XORLinkedList {
-  // Constructor for an empty linked list.
+  /// Constructor for an empty linked list.
   fn new() -> XORLinkedList { XORLinkedList { nodes: Vec::new() } }
 
-  // Adds an item to the end of the linked list.
+  /// Adds an item to the end of the linked list.
   fn add(&mut self, v: i32) -> &XORLinkedList {
     let l = self.nodes.len();
 
@@ -59,7 +65,7 @@ impl XORLinkedList {
     // pointer.
     if l == 0 {
       // First, create the new node.
-      let n = XORLinkedListNode::new(v);
+      let n = XORLinkedListNode::new_single(v);
 
       // Add node to the internal vector.
       self.nodes.push(n);
@@ -70,10 +76,10 @@ impl XORLinkedList {
       let tl = &mut self.nodes[l - 1];
 
       // Create new tail node
-      let n = XORLinkedListNode::new2(v, tl.address());
+      let n = XORLinkedListNode::new(v, address(tl));
 
       // Set former tail's `both` = `prev` XOR `new tail`
-      tl.both = tl.both ^ n.address();
+      tl.both = tl.both ^ address(&n);
 
       self
     }
@@ -82,7 +88,7 @@ impl XORLinkedList {
   /// Returns the `XORLinkedListNode` at the given index. This will fail if the
   /// index is outside the length of the linked list.
   fn get(&self, index: usize) -> &XORLinkedListNode {
-    fn getHelper(
+    fn get_helper(
       n: &XORLinkedListNode,
       idx: usize,
       prev_address: usize,
@@ -93,10 +99,48 @@ impl XORLinkedList {
         // Get the address of the next node.
         let next_address = n.both ^ prev_address;
         let next_n = next_address as *const XORLinkedListNode;
-        getHelper(unsafe { &(*next_n) }, idx - 1, n.address())
+        get_helper(unsafe { &(*next_n) }, idx - 1, address(n))
       }
     }
-    getHelper(&self.nodes[0], index, EMPTY)
+    get_helper(&self.nodes[0], index, EMPTY)
+  }
+}
+
+#[cfg(test)]
+mod tests {
+  use super::*;
+
+  #[test]
+  fn test_new_ll() {
+    let lst = XORLinkedList::new();
+
+    // Item was initialized and was not set to address '0x0'.
+    assert_ne!(address(&lst), 0 as usize);
+  }
+
+  #[test]
+  fn test_new_single_lln() {
+    let node = XORLinkedListNode::new_single(5);
+
+    assert_ne!(address(&node), 0 as usize);
+    assert_eq!(node.element, 5);
+  }
+
+  #[test]
+  fn test_new_multi_lln() {
+    let node1 = XORLinkedListNode::new_single(2);
+    let node2 = XORLinkedListNode::new(3, address(&node1));
+
+    assert_ne!(address(&node1), 0 as usize);
+    assert_ne!(address(&node2), 0 as usize);
+    assert_eq!(node1.element, 2);
+    assert_eq!(node2.element, 3);
+    assert_eq!(node2.both, address(&node1));
+  }
+
+  #[test]
+  fn test_add_single() {
+    // Test add here
   }
 }
 
