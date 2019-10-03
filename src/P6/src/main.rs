@@ -127,7 +127,7 @@ mod tests {
   }
 
   #[test]
-  fn test_new_multi_lln() {
+  fn test_new_two_lln() {
     let node1 = XORLinkedListNode::new_single(2);
     let node2 = XORLinkedListNode::new(3, address(&node1));
 
@@ -136,6 +136,29 @@ mod tests {
     assert_eq!(node1.element, 2);
     assert_eq!(node2.element, 3);
     assert_eq!(node2.both, address(&node1));
+  }
+
+  #[test]
+  fn test_new_three_lln() {
+    let mut node1 = XORLinkedListNode::new_single(2);
+    let mut node2 = XORLinkedListNode::new_single(3);
+    let mut node3 = XORLinkedListNode::new_single(4);
+    let node2b = XORLinkedListNode::new(5, address(&node1) ^ address(&node3));
+
+    // Set the `both` attributes
+    node1.both = address(&node2);
+    node2.both = address(&node1) ^ address(&node3);
+    node3.both = address(&node2);
+
+    assert_ne!(address(&node1), 0 as usize);
+    assert_ne!(address(&node2), 0 as usize);
+    assert_ne!(address(&node2b), 0 as usize);
+    assert_ne!(address(&node3), 0 as usize);
+    assert_eq!(node1.element, 2);
+    assert_eq!(node2.element, 3);
+    assert_eq!(node2b.element, 5);
+    assert_eq!(node3.element, 4);
+    assert_eq!(node2.both, node2b.both);
   }
 
   #[test]
