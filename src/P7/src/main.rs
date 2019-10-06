@@ -95,7 +95,7 @@ mod problem_7 {
   const INVALID_INT: i32 = -1;
 
   /// Check the validity of a string against the LOWER_LIMIT and UPPER_LIMIT.
-  fn is_valid(s: &[u8]) -> bool {
+  pub fn is_valid(s: &[u8]) -> bool {
     // An empty string and a string starting with '0' are invalid.
     if s.len() > 0 && s[0] != b'0' {
       let i = str::from_utf8(s)
@@ -109,7 +109,7 @@ mod problem_7 {
   }
 
   /// Non-memoized solution.
-  fn p7(input_str: &str) -> i32 {
+  pub fn p7(input_str: &str) -> i32 {
     fn calc(s: &[u8]) -> i32 {
       if s.len() == 0 {
         // Base case - when there is nothing more to analyze, it means the
@@ -134,23 +134,25 @@ mod problem_7 {
     calc(input_str.as_bytes())
   }
 
-  fn p7_memoize(input_str: &str) -> i32 {
-    // `HashMap` that holds memoized values.
-    let mut memo_map: HashMap<&[u8], i32> = HashMap::new();
-
-    fn calc(s: &[u8]) -> i32 {
-      if memo_map.
-      else if s.len() == 0 {
+  pub fn p7_memoize(input_str: &str) -> i32 {
+    fn calc(s: &[u8], m: &mut HashMap<&[u8], i32>) -> i32 {
+      if m.contains_key(s) {
+        *m.get(s).unwrap()
+      } else if s.len() == 0 {
         // Base case - when there is nothing more to analyze, it means the
         // entire input string was valid
         1
       } else {
         // Is the next integer a valid value?
-        let one_letter = if is_valid(&s[0..1]) { calc(&s[1..]) } else { 0 };
+        let one_letter = if is_valid(&s[0..1]) {
+          calc(&s[1..], m)
+        } else {
+          0
+        };
 
         // Is the combination of next 2 integers a valid value?
         let two_letters = if s.len() > 1 && is_valid(&s[0..2]) {
-          calc(&s[2..])
+          calc(&s[2..], m)
         } else {
           0
         };
@@ -160,7 +162,10 @@ mod problem_7 {
       }
     }
 
-    calc(input_str.as_bytes())
+    // `HashMap` that holds memoized values.
+    let mut memo_map: HashMap<&[u8], i32> = HashMap::new();
+
+    calc(input_str.as_bytes(), &mut memo_map)
   }
 
   /// Tests module
@@ -270,7 +275,7 @@ mod problem_7 {
     }
 
     #[test]
-    fn test_p7_pb_valid_values() {
+    pub fn test_p7_pb_valid_values() {
       proptest!(|(x in "[1-9][0-9]*")| {
         p7(&x);
       })
@@ -285,15 +290,70 @@ mod problem_7 {
     fn test_p7_11() { assert_eq!(p7("11"), 2) }
   }
 
+  #[cfg(test)]
+  mod test_p7_memoize {
+    /// Pull in all functions from the parent module, including private
+    /// variables and functions.
+    use super::*;
+
+    /// Import for property-based testing.
+    use proptest::prelude::*;
+
+    /// Tests the `p7_memoize` function for crashes.
+    #[test]
+    fn test_p7m_pb_crash() {
+      // Test for crashes.
+      proptest!(|(x in "[0-9]*")| {
+        p7(&x);
+      })
+    }
+
+    #[test]
+    pub fn test_p7m_pb_valid_values() {
+      proptest!(|(x in "[1-9][0-9]*")| {
+        p7(&x);
+      })
+    }
+
+    /// Given test in problem statement.
+    #[test]
+    fn test_p7m_given_111() { assert_eq!(p7("111"), 3) }
+
+    /// Simpler version of test provided in problem statement.
+    #[test]
+    fn test_p7m_11() { assert_eq!(p7("11"), 2) }
+  }
+
   /// Benchmarks module
   #[cfg(test)]
   mod benchmarks {
-    use super::test_is_valid::*;
+    use super::*;
     use test::Bencher;
+
+    const NUMBER_OF_ITERATIONS: i32 = 100000;
 
     #[bench]
     fn bench_is_valid_pb_i32(b: &mut Bencher) {
-      b.iter(|| test_is_valid_pb_i32())
+      b.bench(|_| {
+        let n = test::black_box(NUMBER_OF_ITERATIONS);
+        (0..n).map(|_| test_is_valid::test_is_valid_pb_i32());
+      });
+    }
+
+    #[bench]
+    fn bench_p7_pb_valid_values(b: &mut Bencher) {
+      b.iter(|| {
+        let n = test::black_box(NUMBER_OF_ITERATIONS);
+        (0..n).map(|_| test_p7::test_p7_pb_valid_values())
+      })
+    }
+
+    #[bench]
+    fn bench_p7m_pb_valid_values(b: &mut Bencher) {
+      b.iter(|| {
+        let n = test::black_box(NUMBER_OF_ITERATIONS);
+        (0..n).map(|_| test_p7_memoize::test_p7m_pb_valid_values())
+      })
     }
   }
 }
