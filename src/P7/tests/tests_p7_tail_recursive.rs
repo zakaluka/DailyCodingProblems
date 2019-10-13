@@ -3,7 +3,7 @@
 extern crate test;
 
 #[cfg(test)]
-mod tests_p7 {
+mod tests_p7_tail_recursive {
   /// Import for property-based testing.
   use proptest::prelude::*;
 
@@ -12,26 +12,26 @@ mod tests_p7 {
 
   /// Tests using values starting with any possible integer.
   #[test]
-  fn test_p7_pb_all() {
+  fn test_p7tr_pb_all() {
     // Test for crashes.
     proptest!(|(x in "[0-9]*")| {
-      p7(&x);
+      p7_tail_recursive(&x);
     })
   }
 
   /// Tests using values not starting with `0`.
   #[test]
-  fn test_p7_pb_valid_values() {
+  fn test_p7tr_pb_valid_values() {
     proptest!(|(x in "[1-9][0-9]*")| {
-      p7(&x);
+      p7_tail_recursive(&x);
     })
   }
 
   /// Given test in problem statement.
   #[test]
-  fn test_p7_given_111() { assert_eq!(p7("111"), 3) }
+  fn test_p7tr_given_111() { assert_eq!(p7_tail_recursive("111"), 3) }
 
   /// Simpler version of test provided in problem statement.
   #[test]
-  fn test_p7_11() { assert_eq!(p7("11"), 2) }
+  fn test_p7tr_11() { assert_eq!(p7_tail_recursive("11"), 2) }
 }

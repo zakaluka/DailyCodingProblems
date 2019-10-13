@@ -1,60 +1,75 @@
 #[macro_use]
 extern crate criterion;
 
-use criterion::black_box;
+// Import the libraries for performance testing.
 use criterion::Criterion;
+use criterion::{black_box, BenchmarkId};
 
-fn fibonacci(n: u64) -> u64 {
-  match n {
-    0 => 1,
-    1 => 1,
-    n => fibonacci(n - 1) + fibonacci(n - 2),
-  }
+// Import the library code for testing.
+use p7::problem_7::*;
+
+fn bench_is_valid(c: &mut Criterion) {
+  c.bench_function("is_valid", |b| {
+    b.iter(|| {
+      for i in 0..100 {
+        is_valid(black_box(format!("{}", i).as_bytes()));
+      }
+    })
+  });
 }
 
-fn criterion_benchmark(c: &mut Criterion) {
-  c.bench_function("fib 20", |b| b.iter(|| fibonacci(black_box(20))));
-}
+fn bench_p7_all(c: &mut Criterion) {
+  let inputs = [
+    "1".repeat(20),
+    "2".repeat(20),
+    "12".repeat(10),
+    "123".repeat(10),
+    // non-repeating value 1, 18
+    "124782193651078432562974".to_string(),
+    // non-repeating value 2, 245760
+    "12131415161718191010918171615145141313121".to_string(),
+  ];
 
-criterion_group!(benches, criterion_benchmark);
-criterion_main!(benches);
+  let mut group = c.benchmark_group("Problem 7");
 
-/*
-#![feature(test)]
-
-extern crate test;
-
-/// Benchmarks module
-#[cfg(test)]
-mod benchmarks {
-  use super::*;
-  use test::Bencher;
-
-  const NUMBER_OF_ITERATIONS: i32 = 100000;
-
-  #[bench]
-  fn bench_is_valid_pb_i32(b: &mut Bencher) {
-    b.bench(|_| {
-      let n = test::black_box(NUMBER_OF_ITERATIONS);
-      (0..n).map(|_| test_is_valid::test_is_valid_pb_i32());
+  for elt in inputs.iter() {
+    // Naive function.
+    group.bench_with_input(BenchmarkId::new("p7", elt), elt, |b, i| {
+      b.iter(|| {
+        p7(black_box(i));
+      })
     });
-  }
 
-  #[bench]
-  fn bench_p7_pb_valid_values(b: &mut Bencher) {
-    b.iter(|| {
-      let n = test::black_box(NUMBER_OF_ITERATIONS);
-      (0..n).map(|_| test_p7::test_p7_pb_valid_values())
-    })
-  }
+    // Memoized function.
+    group.bench_with_input(BenchmarkId::new("p7_memoize", elt), elt, |b, i| {
+      b.iter(|| {
+        p7_memoized(black_box(i));
+      })
+    });
 
-  #[bench]
-  fn bench_p7m_pb_valid_values(b: &mut Bencher) {
-    b.iter(|| {
-      let n = test::black_box(NUMBER_OF_ITERATIONS);
-      (0..n).map(|_| test_p7_memoize::test_p7m_pb_valid_values())
-    })
+    // Tail-recursive-ish function.
+    group.bench_with_input(
+      BenchmarkId::new("p7_tail_recursive_ish", elt),
+      elt,
+      |b, i| {
+        b.iter(|| {
+          p7_tail_recursive_ish(black_box(i));
+        })
+      },
+    );
+
+    // Tail-recursive function.
+    group.bench_with_input(
+      BenchmarkId::new("p7_tail_recursive", elt),
+      elt,
+      |b, i| {
+        b.iter(|| {
+          p7_tail_recursive(black_box(i));
+        })
+      },
+    );
   }
 }
 
-*/
+criterion_group!(benches, bench_is_valid, bench_p7_all);
+criterion_main!(benches);

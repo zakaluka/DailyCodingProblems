@@ -104,7 +104,7 @@ pub mod problem_7 {
     }
   }
 
-  /// Non-memoized solution.
+  /// Initial solution, not tail recursive and not memoized.
   pub fn p7(input_str: &str) -> i32 {
     fn calc(s: &[u8]) -> i32 {
       if s.len() == 0 {
@@ -130,10 +130,103 @@ pub mod problem_7 {
     calc(input_str.as_bytes())
   }
 
-  pub fn p7_memoize(input_str: &str) -> i32 {
-    fn calc(s: &[u8], m: &mut HashMap<&[u8], i32>) -> i32 {
-      if m.contains_key(s) {
-        *m.get(s).unwrap()
+  /// Tail-recursive-ish solution, not memoized. I don't believe this is tail
+  /// recursive because I am not "passing the stack" manually through a function
+  /// argument. Instead, since almost all nodes have two children (`one_letter`
+  /// and `two_letter`), I am relying on the system to "spring back" to the node
+  /// in the call stack to go down the other avenue. Really, it is only
+  /// tail-recursive in the sense that once we go down the rightmost branch
+  /// of a node, we can return the answer for that node without having to go
+  /// back up the call stack.
+  pub fn p7_tail_recursive_ish(input_str: &str) -> i32 {
+    fn calc(s: &[u8], ans: i32) -> i32 {
+      if s.len() == 0 {
+        // Base case - when there is nothing more to analyze, it means the
+        // entire input string was valid
+        1 + ans
+      } else {
+        // Is the next integer a valid value? If yes, check the rest of that DFS
+        // branch.  Otherwise, stop checking that avenue.
+        let one_letter = if is_valid(&s[0..1]) {
+          calc(&s[1..], ans)
+        } else {
+          ans
+        };
+
+        // Check if the combination of next 2 integers is a valid value.  If it
+        // is, check the rest of that DFS branch. Otherwise, stop checking that
+        // avenue. We pass `one_letter` to `calc()` because it already
+        // incorporates `ans` from its calculation.
+        let two_letter = if s.len() > 1 && is_valid(&s[0..2]) {
+          calc(&s[2..], one_letter)
+        } else {
+          one_letter
+        };
+
+        two_letter
+      }
+    }
+
+    calc(input_str.as_bytes(), 0)
+  }
+
+  /// Properly tail-recursive version of `p7_tail_recursive_ish`. The
+  /// implementation has to maintain two values:
+  ///
+  /// * the stack of remaining investigations
+  /// * the answer.
+  ///
+  /// That way, we don't have to rely on the program's call stack to investigate
+  /// all branches through the string. Because we are using a `Vec<T>` to hold
+  /// the stack, the algorithm is still a DFS (depth-first search) because the
+  /// `push()` and `pop()` functions operate on the last element of the `Vec`.
+  pub fn p7_tail_recursive(input_str: &str) -> i32 {
+    fn calc(stack: &mut Vec<&[u8]>, ans: i32) -> i32 {
+      if stack.len() == 0 {
+        // We are out of branches to investigate.
+        ans
+      } else {
+        // Get the last element (inappropriately called `hd` or head) to
+        // investigate.
+        let hd = stack.pop().unwrap();
+
+        // Head has no remaining elements, so it was a valid string.
+        if hd.len() == 0 {
+          calc(stack, ans + 1)
+        } else {
+          // Head has items in the array, so they need to be investigated. We
+          // only investigate branches where the next 1-2 characters represent a
+          // valid integer.
+
+          // If the next two characters are a valid integer, push the rest of
+          // that branch onto the stack.
+          if hd.len() > 1 && is_valid(&hd[0..2]) {
+            stack.push(&hd[2..])
+          }
+
+          // If the next character is a valid integer, push the rest of that
+          // branch onto the stack.
+          if is_valid(&hd[0..1]) {
+            stack.push(&hd[1..])
+          }
+
+          // Investigate the newly updated stack.
+          calc(stack, ans)
+        }
+      }
+    }
+
+    let stk: &mut Vec<&[u8]> = &mut Vec::new();
+    stk.push(input_str.as_bytes());
+    calc(stk, 0)
+  }
+
+  /// Memoized solution, not tail-recursive.
+  pub fn p7_memoized(input_str: &str) -> i32 {
+    fn calc(s: &[u8], m: &mut HashMap<String, i32>) -> i32 {
+      let s_to_string = str::from_utf8(s).unwrap().to_string();
+      if m.contains_key(&s_to_string) {
+        *m.get(&s_to_string).unwrap()
       } else if s.len() == 0 {
         // Base case - when there is nothing more to analyze, it means the
         // entire input string was valid
@@ -153,13 +246,14 @@ pub mod problem_7 {
           0
         };
 
+        m.insert(s_to_string, one_letter + two_letters);
         // Return the number of valid combinations
         one_letter + two_letters
       }
     }
 
     // `HashMap` that holds memoized values.
-    let mut memo_map: HashMap<&[u8], i32> = HashMap::new();
+    let mut memo_map: HashMap<String, i32> = HashMap::new();
 
     calc(input_str.as_bytes(), &mut memo_map)
   }
