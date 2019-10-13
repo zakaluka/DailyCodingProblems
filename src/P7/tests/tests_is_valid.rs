@@ -3,7 +3,7 @@
 extern crate test;
 
 #[cfg(test)]
-mod test_is_valid {
+mod tests_is_valid {
   /// Import for property-based testing.
   use proptest::prelude::*;
 
@@ -20,7 +20,7 @@ mod test_is_valid {
 
   /// Test `is_valid()` for crashes, using property-based testing.
   #[test]
-  fn test_is_valid_pb_crash() {
+  fn test_is_valid_pb_all() {
     // Test for crashes
     proptest!(|(x in "[0-9]*")| {
       is_valid(x.as_bytes())
@@ -51,7 +51,7 @@ mod test_is_valid {
   /// Test `is_valid()` with any i32 value.  This is used for benchmarks as
   /// well.
   #[test]
-   fn test_is_valid_pb_i32() {
+  fn test_is_valid_pb_i32() {
     proptest!(|(x: i32)| {
       let y = format!("{}", x);
       is_valid(y.as_bytes());
