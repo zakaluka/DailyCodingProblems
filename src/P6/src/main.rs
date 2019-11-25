@@ -266,7 +266,6 @@ mod tests {
     lst3.add(14);
     lst3.add(15);
 
-
     assert_eq!(lst3.get(0).element, 10);
     assert_eq!(lst3.get(1).element, 11);
     assert_eq!(lst3.get(2).element, 12);
