@@ -25,7 +25,7 @@ fn bench_p7_all(c: &mut Criterion) {
     "12".repeat(10),
     "123".repeat(10),
     // non-repeating value 1, 18
-    "124782193651078432562974".to_string(),
+    "1247821936510784325629742".to_string(),
     // non-repeating value 2, 245760
     "12131415161718191010918171615145141313121".to_string(),
   ];
@@ -34,7 +34,7 @@ fn bench_p7_all(c: &mut Criterion) {
 
   for elt in inputs.iter() {
     // Naive function.
-    group.bench_with_input(BenchmarkId::new("p7", elt), elt, |b, i| {
+    group.bench_with_input(BenchmarkId::new("p7_naive", elt), elt, |b, i| {
       b.iter(|| {
         p7(black_box(i));
       })
