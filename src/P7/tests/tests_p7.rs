@@ -34,11 +34,4 @@ mod tests_p7 {
   /// Simpler version of test provided in problem statement.
   #[test]
   fn test_p7_11() { assert_eq!(p7("11"), 2) }
-
-  #[test]
-  fn test_p7_for_benchmark() {
-    for i in 0..100 {
-      assert_eq!(p7("12131415161718191010918171"), 1280)
-    }
-  }
 }

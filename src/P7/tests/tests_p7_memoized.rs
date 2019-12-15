@@ -34,9 +34,4 @@ mod tests_p7_memoized {
   /// Simpler version of test provided in problem statement.
   #[test]
   fn test_p7m_11() { assert_eq!(p7_memoized("11"), 2) }
-
-  #[test]
-  fn test_p7m_for_benchmark() {
-    assert_eq!(p7_memoized("12131415161718191010918171"), 1280)
-  }
 }

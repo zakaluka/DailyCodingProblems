@@ -1,0 +1,1928 @@
+desc: --stacks=yes --massif-out-file=./massif.out.p7_memoize
+cmd: target/release/benchmark-966e0a9062813cb7 --bench --profile-time 60 p7_memoize/12131415161718191010918171615145141313121
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=1371545
+mem_heap_B=17193
+mem_heap_extra_B=4079
+mem_stacks_B=13312
+heap_tree=detailed
+n8: 17193 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 3392 in 97 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 861 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n0: 376 in 3 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=2
+#-----------
+time=399092212
+mem_heap_B=17873
+mem_heap_extra_B=4103
+mem_stacks_B=12360
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=684159523
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=7432
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=943710902
+mem_heap_B=18665
+mem_heap_extra_B=4095
+mem_stacks_B=10792
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=1209619753
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=7784
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1440844658
+mem_heap_B=19177
+mem_heap_extra_B=4087
+mem_stacks_B=5192
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=1756300813
+mem_heap_B=16698
+mem_heap_extra_B=3646
+mem_stacks_B=7568
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=2192323870
+mem_heap_B=17873
+mem_heap_extra_B=4103
+mem_stacks_B=12360
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=2489612273
+mem_heap_B=16884
+mem_heap_extra_B=3724
+mem_stacks_B=8256
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=2812627435
+mem_heap_B=16553
+mem_heap_extra_B=3591
+mem_stacks_B=6456
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=3167944313
+mem_heap_B=17873
+mem_heap_extra_B=4103
+mem_stacks_B=12360
+heap_tree=detailed
+n9: 17873 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 3248 in 97 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 861 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n0: 376 in 3 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 824 0x146B2A: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 824 0x146C66: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n1: 824 0x146123: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 824 0x145C52: p7::problem_7::p7_memoized::calc (map.rs:817)
+     n2: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n2: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+              n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+               n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                n2: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                 n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                  n1: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                   n2: 824 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                    n1: 544 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+                     n1: 544 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+                      n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                       n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                        n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                         n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                          n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                           n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                            n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                             n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                              n0: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                    n0: 280 in 1 place, below massif's threshold (1.00%)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=12
+#-----------
+time=3458658023
+mem_heap_B=16454
+mem_heap_extra_B=3538
+mem_stacks_B=5856
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=3813974711
+mem_heap_B=17329
+mem_heap_extra_B=4095
+mem_stacks_B=12264
+heap_tree=detailed
+n8: 17329 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 3528 in 98 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 861 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n0: 376 in 3 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=14
+#-----------
+time=4201593237
+mem_heap_B=17156
+mem_heap_extra_B=3924
+mem_stacks_B=10944
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=4460005911
+mem_heap_B=17593
+mem_heap_extra_B=4087
+mem_stacks_B=11240
+heap_tree=detailed
+n9: 17593 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 3248 in 97 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 861 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n2: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 330 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n0: 330 in 3 places, all below massif's threshold (1.00%)
+          n0: 46 in 2 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 544 0x146B2A: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 544 0x146C66: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n1: 544 0x146123: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 544 0x145C52: p7::problem_7::p7_memoized::calc (map.rs:817)
+     n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+              n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+               n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                 n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                  n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                   n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                    n1: 544 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+                     n1: 544 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+                      n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                       n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                        n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                         n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                          n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                           n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                            n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                             n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                              n0: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                    n0: 0 in 1 place, below massif's threshold (1.00%)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=16
+#-----------
+time=4686116970
+mem_heap_B=17156
+mem_heap_extra_B=3924
+mem_stacks_B=10960
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=4912228095
+mem_heap_B=16346
+mem_heap_extra_B=3478
+mem_stacks_B=5128
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=5267545558
+mem_heap_B=17593
+mem_heap_extra_B=4087
+mem_stacks_B=11608
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=5558259846
+mem_heap_B=16308
+mem_heap_extra_B=3460
+mem_stacks_B=4912
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=5848974210
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=9360
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=6042783780
+mem_heap_B=16488
+mem_heap_extra_B=3560
+mem_stacks_B=6008
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=6301196501
+mem_heap_B=16861
+mem_heap_extra_B=3707
+mem_stacks_B=8688
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=6688815564
+mem_heap_B=18808
+mem_heap_extra_B=3784
+mem_stacks_B=4280
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=6947228348
+mem_heap_B=17081
+mem_heap_extra_B=3855
+mem_stacks_B=9688
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=7270244268
+mem_heap_B=17146
+mem_heap_extra_B=3910
+mem_stacks_B=10936
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=7528656968
+mem_heap_B=17873
+mem_heap_extra_B=4103
+mem_stacks_B=12264
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=7722466522
+mem_heap_B=19177
+mem_heap_extra_B=4087
+mem_stacks_B=5768
+heap_tree=detailed
+n10: 19177 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 2950 in 96 places, all below massif's threshold (1.00%)
+ n1: 2128 0x146B2A: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 2128 0x146C66: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n1: 2128 0x146123: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 2128 0x145C52: p7::problem_7::p7_memoized::calc (map.rs:817)
+     n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+              n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+               n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                 n1: 2128 0x145918: p7::problem_7::p7_memoized (lib.rs:581)
+                  n2: 2128 0x13CD1D: criterion::Bencher<M>::iter (benchmark.rs:46)
+                   n1: 2128 0x124B70: <core::iter::adapters::Map<I,F> as core::iter::traits::iterator::Iterator>::fold (benchmark.rs:45)
+                    n1: 2128 0x138581: criterion::routine::Routine::profile (iterator.rs:632)
+                     n1: 2128 0x129138: criterion::analysis::common (mod.rs:74)
+                      n1: 2128 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+                       n1: 2128 0x1287A9: benchmark::main (benchmark.rs:44)
+                        n1: 2128 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+                         n1: 2128 0x246521: std::panicking::try::do_call (rt.rs:48)
+                          n1: 2128 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+                           n1: 2128 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+                            n0: 2128 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+                   n0: 0 in 2 places, all below massif's threshold (1.00%)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 861 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n2: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 330 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n0: 330 in 3 places, all below massif's threshold (1.00%)
+          n0: 46 in 2 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 298 0x12F3CB: criterion::benchmark_group::BenchmarkId::new (alloc.rs:84)
+  n0: 298 in 22 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=28
+#-----------
+time=7980879308
+mem_heap_B=16724
+mem_heap_extra_B=3660
+mem_stacks_B=7896
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=8239292042
+mem_heap_B=17329
+mem_heap_extra_B=4095
+mem_stacks_B=12136
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=8433101634
+mem_heap_B=20249
+mem_heap_extra_B=4095
+mem_stacks_B=7656
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=8691514398
+mem_heap_B=16553
+mem_heap_extra_B=3591
+mem_stacks_B=6752
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=8949927112
+mem_heap_B=17186
+mem_heap_extra_B=3990
+mem_stacks_B=11832
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=9262081200
+mem_heap_B=17096
+mem_heap_extra_B=3864
+mem_stacks_B=9832
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=9470183981
+mem_heap_B=18665
+mem_heap_extra_B=4095
+mem_stacks_B=10704
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=9886389425
+mem_heap_B=16698
+mem_heap_extra_B=3646
+mem_stacks_B=7568
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=10094492157
+mem_heap_B=17593
+mem_heap_extra_B=4087
+mem_stacks_B=11240
+heap_tree=detailed
+n9: 17593 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 3248 in 97 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 861 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n2: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 330 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n0: 330 in 3 places, all below massif's threshold (1.00%)
+          n0: 46 in 2 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 544 0x146B2A: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 544 0x146C66: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n1: 544 0x146123: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 544 0x145C52: p7::problem_7::p7_memoized::calc (map.rs:817)
+     n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+              n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+               n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                 n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                  n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                   n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                    n1: 544 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+                     n1: 544 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+                      n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                       n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                        n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                         n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                          n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                           n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                            n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                             n1: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                              n0: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                    n0: 0 in 1 place, below massif's threshold (1.00%)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=37
+#-----------
+time=10406646285
+mem_heap_B=17593
+mem_heap_extra_B=4087
+mem_stacks_B=11904
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=10822851791
+mem_heap_B=16773
+mem_heap_extra_B=3691
+mem_stacks_B=8464
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=11135006028
+mem_heap_B=17065
+mem_heap_extra_B=3847
+mem_stacks_B=9464
+heap_tree=detailed
+n8: 17065 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 3400 in 98 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 725 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 640 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 558 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 500 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 444 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 390 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 354 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 319 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n0: 319 in 3 places, all below massif's threshold (1.00%)
+        n0: 35 in 2 places, all below massif's threshold (1.00%)
+       n0: 36 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=40
+#-----------
+time=11343108834
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=9888
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=11655262942
+mem_heap_B=18665
+mem_heap_extra_B=4095
+mem_stacks_B=10792
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=11863365715
+mem_heap_B=19177
+mem_heap_extra_B=4087
+mem_stacks_B=5768
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=12175519817
+mem_heap_B=19177
+mem_heap_extra_B=4087
+mem_stacks_B=5384
+heap_tree=detailed
+n10: 19177 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 2950 in 96 places, all below massif's threshold (1.00%)
+ n1: 2128 0x146B2A: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 2128 0x146C66: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n1: 2128 0x146123: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 2128 0x145C52: p7::problem_7::p7_memoized::calc (map.rs:817)
+     n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+              n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+               n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                 n1: 2128 0x145918: p7::problem_7::p7_memoized (lib.rs:581)
+                  n2: 2128 0x13CD1D: criterion::Bencher<M>::iter (benchmark.rs:46)
+                   n1: 2128 0x124B70: <core::iter::adapters::Map<I,F> as core::iter::traits::iterator::Iterator>::fold (benchmark.rs:45)
+                    n1: 2128 0x138581: criterion::routine::Routine::profile (iterator.rs:632)
+                     n1: 2128 0x129138: criterion::analysis::common (mod.rs:74)
+                      n1: 2128 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+                       n1: 2128 0x1287A9: benchmark::main (benchmark.rs:44)
+                        n1: 2128 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+                         n1: 2128 0x246521: std::panicking::try::do_call (rt.rs:48)
+                          n1: 2128 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+                           n1: 2128 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+                            n0: 2128 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+                   n0: 0 in 2 places, all below massif's threshold (1.00%)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 861 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n2: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n2: 330 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 286 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n0: 286 in 3 places, all below massif's threshold (1.00%)
+           n0: 44 in 2 places, all below massif's threshold (1.00%)
+          n0: 46 in 2 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 85 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 298 0x12F3CB: criterion::benchmark_group::BenchmarkId::new (alloc.rs:84)
+  n0: 298 in 22 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=12487673955
+mem_heap_B=19177
+mem_heap_extra_B=4087
+mem_stacks_B=5416
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=12903879487
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=10512
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=13216033634
+mem_heap_B=18135
+mem_heap_extra_B=4097
+mem_stacks_B=9824
+heap_tree=detailed
+n9: 18135 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 3248 in 97 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1072 0x146B2A: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1072 0x146C66: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n1: 1072 0x146123: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 1072 0x145C52: p7::problem_7::p7_memoized::calc (map.rs:817)
+     n2: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n2: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n1: 1072 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+              n1: 1072 0x145C29: p7::problem_7::p7_memoized::calc (lib.rs:567)
+               n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                 n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                  n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                   n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                    n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                     n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                      n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                       n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                        n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                         n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                          n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                           n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                            n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                             n1: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                              n0: 1072 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 875 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n2: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 330 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n0: 330 in 3 places, all below massif's threshold (1.00%)
+          n0: 46 in 2 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 99 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=47
+#-----------
+time=13528187711
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=9144
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=13736290424
+mem_heap_B=16308
+mem_heap_extra_B=3460
+mem_stacks_B=4888
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=14152495893
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=9144
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=14346305514
+mem_heap_B=19215
+mem_heap_extra_B=4105
+mem_stacks_B=4984
+heap_tree=detailed
+n10: 19215 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 2950 in 96 places, all below massif's threshold (1.00%)
+ n1: 2128 0x146B2A: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 2128 0x146C66: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n1: 2128 0x146123: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 2128 0x145C52: p7::problem_7::p7_memoized::calc (map.rs:817)
+     n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+             n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+              n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+               n1: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                n2: 2128 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+                 n1: 2128 0x145918: p7::problem_7::p7_memoized (lib.rs:581)
+                  n2: 2128 0x13CD1D: criterion::Bencher<M>::iter (benchmark.rs:46)
+                   n1: 2128 0x124B70: <core::iter::adapters::Map<I,F> as core::iter::traits::iterator::Iterator>::fold (benchmark.rs:45)
+                    n1: 2128 0x138581: criterion::routine::Routine::profile (iterator.rs:632)
+                     n1: 2128 0x129138: criterion::analysis::common (mod.rs:74)
+                      n1: 2128 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+                       n1: 2128 0x1287A9: benchmark::main (benchmark.rs:44)
+                        n1: 2128 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+                         n1: 2128 0x246521: std::panicking::try::do_call (rt.rs:48)
+                          n1: 2128 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+                           n1: 2128 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+                            n0: 2128 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+                   n0: 0 in 2 places, all below massif's threshold (1.00%)
+                 n0: 0 in 1 place, below massif's threshold (1.00%)
+             n0: 0 in 1 place, below massif's threshold (1.00%)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 899 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 776 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 694 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 636 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 580 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 526 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 474 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n2: 424 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n2: 376 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+          n2: 330 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+           n1: 286 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+            n0: 286 in 3 places, all below massif's threshold (1.00%)
+           n0: 44 in 2 places, all below massif's threshold (1.00%)
+          n0: 46 in 2 places, all below massif's threshold (1.00%)
+         n0: 48 in 2 places, all below massif's threshold (1.00%)
+        n0: 50 in 2 places, all below massif's threshold (1.00%)
+       n0: 52 in 2 places, all below massif's threshold (1.00%)
+      n0: 54 in 2 places, all below massif's threshold (1.00%)
+     n0: 56 in 2 places, all below massif's threshold (1.00%)
+    n0: 58 in 2 places, all below massif's threshold (1.00%)
+   n0: 82 in 2 places, all below massif's threshold (1.00%)
+  n0: 123 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 298 0x12F3CB: criterion::benchmark_group::BenchmarkId::new (alloc.rs:84)
+  n0: 298 in 22 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=51
+#-----------
+time=14540115105
+mem_heap_B=17329
+mem_heap_extra_B=4095
+mem_stacks_B=12576
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=14733924673
+mem_heap_B=19177
+mem_heap_extra_B=4087
+mem_stacks_B=6976
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=14927734232
+mem_heap_B=17081
+mem_heap_extra_B=3855
+mem_stacks_B=9616
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=15121543792
+mem_heap_B=18137
+mem_heap_extra_B=4095
+mem_stacks_B=9368
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=15315353363
+mem_heap_B=18731
+mem_heap_extra_B=3725
+mem_stacks_B=4352
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=15509162925
+mem_heap_B=17873
+mem_heap_extra_B=4103
+mem_stacks_B=12368
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=15702972519
+mem_heap_B=19214
+mem_heap_extra_B=4106
+mem_stacks_B=5208
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=15896782092
+mem_heap_B=17135
+mem_heap_extra_B=3897
+mem_stacks_B=10560
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=16090591648
+mem_heap_B=18148
+mem_heap_extra_B=4100
+mem_stacks_B=7352
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=16284401203
+mem_heap_B=16773
+mem_heap_extra_B=3691
+mem_stacks_B=8552
+heap_tree=detailed
+n9: 16773 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5120 0x138736: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n2: 5120 0x130678: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (vec.rs:501)
+   n1: 5120 0x1286CF: benchmark::main (benchmark.rs:37)
+    n1: 5120 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+     n1: 5120 0x246521: std::panicking::try::do_call (rt.rs:48)
+      n1: 5120 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+       n1: 5120 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+        n0: 5120 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 3326 0x261BCC: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:128)
+  n2: 3326 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 3168 0x26A02A: core::fmt::write (mod.rs:1030)
+    n3: 3168 0x261351: alloc::fmt::format (mod.rs:197)
+     n4: 1584 0x164E96: criterion::report::BenchmarkId::new (report.rs:117)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n4: 1584 0x16516C: criterion::report::BenchmarkId::new (report.rs:130)
+      n1: 432 0x12FF6C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 432 0x13040C: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 432 in 6 places, all below massif's threshold (1.00%)
+      n1: 360 0x12FACC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+      n1: 360 0x1308AC: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:258)
+       n0: 360 in 5 places, all below massif's threshold (1.00%)
+     n0: 0 in 4 places, all below massif's threshold (1.00%)
+   n0: 158 in 3 places, all below massif's threshold (1.00%)
+ n0: 2950 in 97 places, all below massif's threshold (1.00%)
+ n1: 1632 0x1414D0: hashbrown::raw::RawTable<T>::reserve_rehash (alloc.rs:84)
+  n1: 1632 0x141616: hashbrown::raw::RawTable<T>::insert (mod.rs:626)
+   n3: 1632 0x144FD7: hashbrown::map::HashMap<K,V,S>::insert (map.rs:855)
+    n1: 816 0x130058: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n1: 816 0x130125: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (map.rs:817)
+     n1: 816 0x128649: benchmark::main (benchmark.rs:44)
+      n1: 816 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+       n1: 816 0x246521: std::panicking::try::do_call (rt.rs:48)
+        n1: 816 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+         n1: 816 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+          n0: 816 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+    n0: 0 in 6 places, all below massif's threshold (1.00%)
+ n2: 1296 0x261B13: <alloc::string::String as core::clone::Clone>::clone (alloc.rs:84)
+  n1: 1082 0x164FB2: criterion::report::BenchmarkId::new (report.rs:123)
+   n0: 1082 in 5 places, all below massif's threshold (1.00%)
+  n0: 214 in 11 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 585 0x1459BF: p7::problem_7::p7_memoized::calc (alloc.rs:84)
+  n2: 544 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+   n2: 504 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+    n2: 465 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+     n2: 427 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+      n2: 390 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+       n2: 354 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+        n1: 319 0x145BC9: p7::problem_7::p7_memoized::calc (lib.rs:560)
+         n0: 319 in 3 places, all below massif's threshold (1.00%)
+        n0: 35 in 2 places, all below massif's threshold (1.00%)
+       n0: 36 in 2 places, all below massif's threshold (1.00%)
+      n0: 37 in 2 places, all below massif's threshold (1.00%)
+     n0: 38 in 2 places, all below massif's threshold (1.00%)
+    n0: 39 in 2 places, all below massif's threshold (1.00%)
+   n0: 40 in 2 places, all below massif's threshold (1.00%)
+  n0: 41 in 2 places, all below massif's threshold (1.00%)
+ n1: 542 0x261BE2: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<&T,core::slice::Iter<T>>>::spec_extend (alloc.rs:84)
+  n2: 542 0x26100A: <&mut W as core::fmt::Write>::write_str (vec.rs:1504)
+   n1: 542 0x26A02A: core::fmt::write (mod.rs:1030)
+    n2: 542 0x261351: alloc::fmt::format (mod.rs:197)
+     n1: 542 0x12F48B: criterion::benchmark_group::BenchmarkId::new (<::alloc::macros::format macros>:2)
+      n0: 542 in 22 places, all below massif's threshold (1.00%)
+     n0: 0 in 3 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 298 0x12F3CB: criterion::benchmark_group::BenchmarkId::new (alloc.rs:84)
+  n0: 298 in 22 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=61
+#-----------
+time=16478210827
+mem_heap_B=18121
+mem_heap_extra_B=4087
+mem_stacks_B=10120
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=16672020432
+mem_heap_B=16383
+mem_heap_extra_B=3497
+mem_stacks_B=5344
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=16850036604
+mem_heap_B=27615
+mem_heap_extra_B=1393
+mem_stacks_B=6016
+heap_tree=peak
+n6: 27615 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 22272 0x1CC936: alloc::raw_vec::RawVec<T,A>::reserve (alloc.rs:128)
+  n1: 18432 0x1C7312: tinytemplate::compiler::TemplateCompiler::compile (vec.rs:501)
+   n3: 18432 0x1C48F0: tinytemplate::TinyTemplate::add_template (template.rs:103)
+    n1: 12288 0x17591A: criterion::html::Html::new (mod.rs:291)
+     n2: 12288 0x13F539: criterion::Criterion<M>::configure_from_args (lib.rs:869)
+      n1: 12288 0x1288E6: benchmark::main (<::criterion::macros::criterion_main macros>:5)
+       n1: 12288 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+        n1: 12288 0x246521: std::panicking::try::do_call (rt.rs:48)
+         n1: 12288 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+          n1: 12288 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+           n0: 12288 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n1: 6144 0x1758E5: criterion::html::Html::new (mod.rs:288)
+     n2: 6144 0x13F539: criterion::Criterion<M>::configure_from_args (lib.rs:869)
+      n1: 6144 0x1288E6: benchmark::main (<::criterion::macros::criterion_main macros>:5)
+       n1: 6144 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+        n1: 6144 0x246521: std::panicking::try::do_call (rt.rs:48)
+         n1: 6144 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+          n1: 6144 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+           n0: 6144 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+  n1: 3840 0x1C8F63: tinytemplate::compiler::TemplateCompiler::compile (vec.rs:501)
+   n3: 3840 0x1C48F0: tinytemplate::TinyTemplate::add_template (template.rs:103)
+    n1: 3072 0x17594F: criterion::html::Html::new (mod.rs:294)
+     n2: 3072 0x13F539: criterion::Criterion<M>::configure_from_args (lib.rs:869)
+      n1: 3072 0x1288E6: benchmark::main (<::criterion::macros::criterion_main macros>:5)
+       n1: 3072 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+        n1: 3072 0x246521: std::panicking::try::do_call (rt.rs:48)
+         n1: 3072 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+          n1: 3072 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+           n0: 3072 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n1: 768 0x1758B0: criterion::html::Html::new (mod.rs:285)
+     n2: 768 0x13F539: criterion::Criterion<M>::configure_from_args (lib.rs:869)
+      n1: 768 0x1288E6: benchmark::main (<::criterion::macros::criterion_main macros>:5)
+       n1: 768 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+        n1: 768 0x246521: std::panicking::try::do_call (rt.rs:48)
+         n1: 768 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+          n1: 768 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+           n0: 768 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 1856 0x1C3C94: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter (alloc.rs:128)
+  n2: 1856 0x1CAA36: tinytemplate::compiler::TemplateCompiler::parse_path (vec.rs:1890)
+   n1: 1440 0x1C8E1F: tinytemplate::compiler::TemplateCompiler::compile (compiler.rs:301)
+    n2: 1440 0x1C48F0: tinytemplate::TinyTemplate::add_template (template.rs:103)
+     n1: 1312 0x17591A: criterion::html::Html::new (mod.rs:291)
+      n2: 1312 0x13F539: criterion::Criterion<M>::configure_from_args (lib.rs:869)
+       n1: 1312 0x1288E6: benchmark::main (<::criterion::macros::criterion_main macros>:5)
+        n1: 1312 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+         n1: 1312 0x246521: std::panicking::try::do_call (rt.rs:48)
+          n1: 1312 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+           n1: 1312 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+            n0: 1312 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+       n0: 0 in 1 place, below massif's threshold (1.00%)
+     n0: 128 in 1 place, below massif's threshold (1.00%)
+   n0: 416 in 3 places, all below massif's threshold (1.00%)
+ n0: 1319 in 101 places, all below massif's threshold (1.00%)
+ n1: 1024 0x23EEE5: std::io::stdio::stdout (alloc.rs:84)
+  n1: 1024 0x23FCCD: std::io::stdio::_print (stdio.rs:786)
+   n1: 1024 0x165C96: criterion::report::CliReport::print_overwritable (report.rs:421)
+    n1: 1024 0x165E72: <criterion::report::CliReport as criterion::report::Report>::benchmark_start (report.rs:506)
+     n1: 1024 0x1658BE: <criterion::report::Reports as criterion::report::Report>::benchmark_start (report.rs:313)
+      n1: 1024 0x12909A: criterion::analysis::common (mod.rs:50)
+       n1: 1024 0x1301A1: criterion::benchmark_group::BenchmarkGroup<M>::bench_with_input (benchmark_group.rs:282)
+        n1: 1024 0x1287A9: benchmark::main (benchmark.rs:44)
+         n1: 1024 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+          n1: 1024 0x246521: std::panicking::try::do_call (rt.rs:48)
+           n1: 1024 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+            n1: 1024 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+             n0: 1024 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+ n2: 600 0x1F7E0E: hashbrown::raw::RawTable<T>::try_with_capacity (alloc.rs:84)
+  n1: 600 0x1F77EE: _ZN9hashbrown3raw17RawTable$LT$T$GT$14reserve_rehash17hfc9691e102a67582E.llvm.11809702695151538590 (mod.rs:788)
+   n1: 600 0x22CA74: hashbrown::rustc_entry::<impl hashbrown::map::HashMap<K,V,S>>::rustc_entry (mod.rs:626)
+    n1: 600 0x2226CA: clap::args::arg_matcher::ArgMatcher::add_val_to (map.rs:668)
+     n1: 600 0x1F1408: clap::app::parser::Parser::add_single_val_to_arg (parser.rs:1859)
+      n1: 600 0x1F20CA: clap::app::parser::Parser::add_defaults (parser.rs:2030)
+       n1: 600 0x1F8880: clap::app::validator::Validator::validate (validator.rs:35)
+        n1: 600 0x1EB4F8: clap::app::parser::Parser::get_matches_with (parser.rs:1203)
+         n1: 600 0x20677B: clap::app::App::get_matches_from_safe_borrow (mod.rs:1629)
+          n1: 600 0x205DEA: clap::app::App::get_matches (mod.rs:1509)
+           n2: 600 0x13E459: criterion::Criterion<M>::configure_from_args (lib.rs:960)
+            n1: 600 0x1288E6: benchmark::main (<::criterion::macros::criterion_main macros>:5)
+             n1: 600 0x142551: std::rt::lang_start::{{closure}} (rt.rs:61)
+              n1: 600 0x246521: std::panicking::try::do_call (rt.rs:48)
+               n1: 600 0x24ED78: __rust_maybe_catch_panic (lib.rs:81)
+                n1: 600 0x24709B: std::rt::lang_start_internal (panicking.rs:265)
+                 n0: 600 0x128A16: main (in /home/zakaluka/projects/DailyCodingProblems/src/P7/target/release/benchmark-966e0a9062813cb7)
+            n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 0 in 1 place, below massif's threshold (1.00%)
+ n1: 544 0x1C3B9E: <alloc::vec::Vec<T> as alloc::vec::SpecExtend<T,I>>::from_iter (alloc.rs:84)
+  n1: 544 0x1CAA36: tinytemplate::compiler::TemplateCompiler::parse_path (vec.rs:1890)
+   n0: 544 in 4 places, all below massif's threshold (1.00%)
