@@ -42,4 +42,9 @@ mod tests_p7_tail_recursive_ish {
   /// Failing test case from property-based testing.
   #[test]
   fn test_p7tri_11111111010() { p7_tail_recursive_ish("11111111010"); }
+
+  #[test]
+  fn test_p7tri_for_benchmark() {
+    assert_eq!(p7_tail_recursive_ish("12131415161718191010918171"), 1280)
+  }
 }
