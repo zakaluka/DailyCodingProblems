@@ -103,8 +103,9 @@
 //! simple constructor that creates new nodes. The second is a `set_both`
 //! function that changes the value of `both` for a boxed, pinned node.
 //!
-//! ```rust
-//! unsafe fn set_both(new_both: usize, node: &mut Pin<Box<XORLinkedListNode>>) {
+//! ```text
+//! unsafe fn set_both(new_both: usize, node: &mut Pin<Box<XORLinkedListNode>>)
+//! {
 //!   let x = node.as_mut();
 //!   Pin::get_unchecked_mut(x).both = new_both;
 //! }
@@ -120,7 +121,7 @@
 //! 1. Creating the new node.
 //! 1. Fixing the `both` attribute of the last node in a non-empty linked list.
 //!
-//! ```rust
+//! ```text
 //! // Adds an item to the end of the linked list.
 //! fn add(&mut self, v: i32) -> &XORLinkedList {
 //!   // Linked list is empty, so add the value with an `EMPTY` both
@@ -161,7 +162,7 @@
 //! desired index. In its current implementation, `get` will `panic` if the
 //! requested index is outside the length of the linked list.
 //!
-//! ```rust
+//! ```text
 //! // Returns the `XORLinkedListNode` at the given index. This will panic if
 //! // the index is outside the length of the linked list.
 //! fn get(&self, index: usize) -> &XORLinkedListNode {
@@ -201,7 +202,7 @@
 //!
 //! The second is a function that returns the address of an object.
 //!
-//! ```rust
+//! ```text
 //! // Gets the memory address of an object.
 //! fn address<T>(elt: &T) -> usize {
 //!   usize::from_str_radix(format!("{:p}", elt).trim_start_matches("0x"), 16)
