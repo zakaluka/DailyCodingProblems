@@ -1,10 +1,12 @@
 pub mod problem_8 {
   pub mod tree {
     /// A simple tree structure modeled as an algebraic data type. This data
-    /// structure assumes that the tree is a "complete" binary tree.
-    pub enum Tree<T: PartialEq> {
-      Leaf(T),
-      Branch(T, Box<Tree<T>>, Box<Tree<T>>),
+    /// structure assumes that the tree is a "complete" binary tree. It does not
+    /// allow `Branch`es with a single child.
+    #[derive(Debug, PartialEq, Hash, Clone)]
+    pub enum Tree {
+      Leaf(bool),
+      Branch(bool, Box<Tree>, Box<Tree>),
     }
 
     /// This function performs a depth-first search to find all unival trees
@@ -12,9 +14,9 @@ pub mod problem_8 {
     ///
     /// Assumption: This is a "complete" binary tree, i.e. all nodes are either
     /// branches with two children or leaves with no children.
-    pub(crate) fn depth_first_search_helper<T: PartialEq>(
-      tree: Box<Tree<T>>,
-    ) -> (Option<T>, i32) {
+    pub(in crate) fn depth_first_search_helper(
+      tree: Box<Tree>,
+    ) -> (Option<bool>, i32) {
       match *tree {
         Tree::Leaf(x) => (Option::from(x), 1),
         Tree::Branch(x, lt, rt) => {
@@ -45,9 +47,32 @@ pub mod problem_8 {
     }
 
     /// The public function to count unival trees given a binary tree.
-    pub fn count_unival_trees<T: PartialEq>(t: Box<Tree<T>>) -> i32 {
+    pub fn count_unival_trees(t: Box<Tree>) -> i32 {
       let (_, count) = depth_first_search_helper(t);
       count
+    }
+
+    /// Unit tests of private functions must be contained within the same module
+    /// / file.
+    #[cfg(test)]
+    mod tests {
+      use crate::problem_8::tree::depth_first_search_helper;
+      use crate::problem_8::tree::Tree::{Branch, Leaf};
+
+      #[test]
+      fn test_problem_private() {
+        let t = Box::new(Branch(
+          false,
+          Box::new(Leaf(true)),
+          Box::new(Branch(
+            false,
+            Box::new(Branch(true, Box::new(Leaf(true)), Box::new(Leaf(true)))),
+            Box::new(Leaf(false)),
+          )),
+        ));
+
+        assert_eq!(depth_first_search_helper(t), (None, 5))
+      }
     }
   }
 }
