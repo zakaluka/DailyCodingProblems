@@ -12,18 +12,27 @@ command = "cargo"
 args = ["build"]
 #dependencies = ["clean"]
 
-[tasks.test]
+[tasks.pre-test]
 # Run tests with a debug compilation.
 env = {"PROPTEST_CASES" = "10000"}
 command = "cargo"
 args = ["test", "--tests"]
 
-[tasks.post-test]
-# If tests work with a debug compilation, run them with a release compilation.
+[tasks.test]
+# If tests work with a debug compilation, run a smaller set with a release
+# compilation.
 env = {"PROPTEST_CASES" = "1000"}
 command = "cargo"
 args = ["test", "--tests", "--release"]
 #dependencies = ["clean"]
+
+[tasks.benchmark]
+command = "cargo"
+args = ["bench"]
+
+[tasks.doc]
+command = "cargo"
+args = ["doc"]
 
 [tasks.simple]
 dependencies = [

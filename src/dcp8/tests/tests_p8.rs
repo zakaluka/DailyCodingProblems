@@ -7,7 +7,12 @@ use proptest::prelude::*;
 use dcp8::problem_8::tree::Tree::{Branch, Leaf};
 use dcp8::problem_8::tree::{count_unival_trees, Tree};
 
+/// A method to generate a random `Tree` for property-based testing.  The
+/// strategy is broken up into two parts.  The first portion has the
+/// non-recursive cases, i.e. `Leaf`.  The second portion has the recursive
+/// cases, i.e. `Branch`.
 fn generate_tree() -> impl Strategy<Value = Tree> {
+  // Non-recursive cases.
   let leaf = prop_oneof![any::<bool>().prop_map(Tree::Leaf),];
   leaf.prop_recursive(
     14,    // depth
@@ -16,13 +21,14 @@ fn generate_tree() -> impl Strategy<Value = Tree> {
             * sense since we don't use collections within the Tree
             * structure. So I used the value that the documentation
             * example uses. */
+    // Recursive cases.
     |inner| {
       prop_oneof![
         // Takes the inner strategy and makes the recursive case. Per the
         // documentation, `inner` is an `Arc` and, since we need to
         // reference it twice, we clone it the first time.
         (any::<bool>(), inner.clone(), inner)
-          .prop_map(|(a, b, c)| Tree::Branch(a, Box::new(b), Box::new(c)))
+          .prop_map(|(a, b, c)| Tree::Branch(a, Box::new(b), Box::new(c))),
       ]
     },
   )
@@ -39,7 +45,8 @@ fn count_leaves(t: Box<Tree>) -> i32 {
 
 // Property-based tests are located within this macro.
 proptest! {
-  /// Test to ensure that number of unival trees is always above zero.
+  /// Test to ensure that number of unival trees is always above zero, since
+  /// every leaf (and there will be at least one) is a unival tree.
   #[test]
   fn test_basic(t in generate_tree()) {
     assert!(count_unival_trees(Box::new(t)) > 0);
