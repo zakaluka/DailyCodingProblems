@@ -2,7 +2,7 @@
 extern crate criterion;
 
 // Import the libraries for benchmarking.
-use criterion::Criterion;
+use criterion::{Benchmark, Criterion};
 use criterion::{BenchmarkId, Throughput};
 
 // Import the library code for benchmarking.
@@ -47,9 +47,14 @@ fn bench_count_unival_trees(c: &mut Criterion) {
     // Report throughput correctly
     group.throughput(Throughput::Elements(*size));
 
-    // Perform the benchmark
+    // Perform the benchmark. The `BenchmarkId` uses an underscore because
+    // without it, during Valgrind memory profiling, the system runs all
+    // benchmarks starting with the specified number (e.g. trying to run the
+    // benchmark with 2 levels, runs benchmarks for levels 2, 256, 2048, and
+    // 262144).  Providing an underscore as the terminating character fixes the
+    // issue.
     group.bench_with_input(
-      BenchmarkId::from_parameter(size),
+      BenchmarkId::new("CUT", format!("{}_", *size)),
       size,
       |b, &size| {
         b.iter(|| count_unival_trees(inputs.get(&size).unwrap().clone()))
