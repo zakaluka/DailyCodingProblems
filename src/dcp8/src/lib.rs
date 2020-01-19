@@ -177,10 +177,10 @@
 ///
 /// I originally wrote out the solution on a piece of paper while on a long
 /// flight (using pseudocode), and I'm glad to see that the algorithm I wrote
-/// there worked without any changes being required.  Converting that pseudocode
-/// into Rust was a lot of fun, and there was a decent amount of wrestling with
-/// the compiler to get this to work.  However, it was a good challenge and I'm
-/// looking forward to more.
+/// there worked with minimal changes being required.  Converting that
+/// pseudocode into Rust was a lot of fun, and there was a decent amount of
+/// wrestling with the compiler to get this to work.  However, it was a good
+/// challenge and I'm looking forward to more.
 ///
 /// See you in the next one!
 ///
