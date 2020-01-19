@@ -1,0 +1,130 @@
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "cargo"
+args = ["build"]
+#dependencies = ["clean"]
+
+[tasks.pre-test]
+# Run tests with a debug compilation.
+env = {"PROPTEST_CASES" = "10000"}
+command = "cargo"
+args = ["test", "--tests"]
+
+[tasks.test]
+# If tests work with a debug compilation, run a smaller set with a release
+# compilation.
+env = {"PROPTEST_CASES" = "1000"}
+command = "cargo"
+args = ["test", "--tests", "--release"]
+dependencies = ["pre-test"]
+
+[tasks.cpu-benchmark]
+command = "cargo"
+args = ["bench"]
+dependencies = ["clean"]
+
+[tasks.memory-benchmark]
+script = [
+'''
+#!/usr/bin/env bash
+
+# Remove old benchmark tests for memory
+echo -n "Attempting to remove old benchmark files..."
+rm -f massif.out.*
+echo "done"
+
+# Create the benchmark executable with debugging symbols, but do not run it. We
+# don't want valgrind to profile the compiler, so we have the "--no-run" flag. We
+# also need debugging symbols so valgrind can track down source code
+# appropriately. It blows my mind to this day that compiling with optimizations +
+# debugging symbols is a thing. For so long I thought they were mutually
+# exclusive.
+RUSTFLAGS="-g" cargo bench  --no-run
+
+# Now find the created benchmark executable. I tend to prefix my benchmark
+# names with 'bench' to easily identify them
+# BENCH=`ls -t target/release/bench* | head -1`
+
+BENCH=`find target/release/bench* -maxdepth 1 -perm -111 -type f | head -1`
+
+# Let's say this was the executable
+# BENCH="./target/release/bench_bits-430e4e0f5d361f1f"
+
+# Now identify a single test that you want profiled. Test identifiers are
+# printed in the console output, so I'll use the one that I posted earlier
+T_IDS[0]="2_"
+T_IDS[1]="4_"
+T_IDS[2]="8_"
+T_IDS[3]="16_"
+T_IDS[4]="32_"
+T_IDS[5]="64_"
+T_IDS[6]="128_"
+T_IDS[7]="256_"
+T_IDS[8]="512_"
+T_IDS[9]="1024_"
+T_IDS[10]="2048_"
+T_IDS[11]="4096_"
+T_IDS[12]="8192_"
+T_IDS[13]="16384_"
+T_IDS[14]="32768_"
+T_IDS[15]="65536_"
+T_IDS[16]="131072_"
+T_IDS[17]="262144_"
+T_IDS[18]="524288_"
+T_IDS[19]="1048576_"
+
+# Have valgrind profile criterion running our benchmark for 10 seconds
+#valgrind --tool=callgrind \
+#         --dump-instr=yes \
+#         --collect-jumps=yes \
+#         --simulate-cache=yes \
+#         $BENCH --bench --profile-time 10 $T_ID
+
+for item in ${T_IDS[*]}
+do
+	printf "running test %s\n" $item
+	valgrind --tool=massif --stacks=yes \
+		--massif-out-file=./massif.out.$item \
+		$BENCH --bench --profile-time 60 "Count Unival Trees/CUT/$item"
+done
+
+# valgrind outputs a callgrind.out.<pid>. We can analyze this with kcachegrind
+#massif-visualizer
+'''
+]
+dependencies = ["clean"]
+
+[tasks.doc-1-build-files]
+command = "cargo"
+args = ["doc"]
+
+[tasks.doc-2-copy-images]
+script_runner = "@shell"
+script = [
+'''
+mkdir target/doc/dcp8/problem_8/images/
+cp src/images/*.* target/doc/dcp8/problem_8/images/
+'''
+]
+
+[tasks.doc]
+dependencies = [
+  "clean",
+  "doc-1-build-files",
+  "doc-2-copy-images"
+]
+
+[tasks.simple]
+dependencies = [
+    "format",
+    "build",
+    "test"
+]

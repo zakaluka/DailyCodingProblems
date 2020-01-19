@@ -16,3 +16,5 @@ src/**/output/
 .ionide/
 target/
 stale_outputs_checked
+massif.out.*
+
