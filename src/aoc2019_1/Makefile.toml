@@ -117,14 +117,15 @@ args = ["doc"]
 script_runner = "@shell"
 script = [
 '''
-mkdir target/doc/dcp8/problem_8/images/
-cp src/images/*.* target/doc/dcp8/problem_8/images/
+# mkdir target/doc/dcp8/problem_8/images/
+# cp src/images/*.* target/doc/dcp8/problem_8/images/
 '''
 ]
 
 [tasks.doc]
 dependencies = [
   "clean",
+  "format",
   "doc-1-build-files",
   "doc-2-copy-images"
 ]
