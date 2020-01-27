@@ -41,8 +41,8 @@ fn opcode_one(number1: i64, number2: i64) -> i64 { number1 + number2 }
 
 fn opcode_two(number1: i64, number2: i64) -> i64 { number1 * number2 }
 
-async fn delay_next_op_code() -> Result<Msg, Msg> {
-  TimeoutFuture::new(1000).await;
+async fn delay_next_op_code(millis: u32) -> Result<Msg, Msg> {
+  TimeoutFuture::new(millis).await;
   Ok(Msg::LogicProcessCurrentOpCode)
 }
 
@@ -56,8 +56,7 @@ fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
     Msg::LogicMoveToNextOpCode => {
       model.position += 4;
       model.log(format!("Moved to position {}\n", model.position).as_str());
-      //      orders.send_msg(Msg::LogicProcessCurrentOpCode);
-      orders.perform_cmd(delay_next_op_code());
+      orders.perform_cmd(delay_next_op_code(1000));
     },
     Msg::ProcessInputClicked => {
       model.ui_model.process_button_disabled = true;
@@ -74,7 +73,7 @@ fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
       model.position = Default::default();
       model.ui_model.operations_history = Default::default();
       model.log("Initializing Logic\n");
-      orders.perform_cmd(delay_next_op_code());
+      orders.perform_cmd(delay_next_op_code(1_000));
     },
     Msg::LogicProcessCurrentOpCode => {
       let op_code = model.int_code[model.position];
@@ -246,6 +245,7 @@ fn view_process_area(model: &Model) -> Node<Msg> {
   ]
 }
 
+/// Convert an i64 to a node, with emphasis placed on "important" nodes.
 fn view_process_area_helper(num: i64, important: bool) -> Node<Msg> {
   div![
     style! {
@@ -259,6 +259,8 @@ fn view_process_area_helper(num: i64, important: bool) -> Node<Msg> {
   ]
 }
 
+/// Main view function that brings together views for the input, process area,
+/// and history.
 fn view(model: &Model) -> impl View<Msg> {
   div![
     style! {
