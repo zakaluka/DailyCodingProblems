@@ -25,4 +25,6 @@ reorder_impl_items = true
 report_fixme = "Always"
 report_todo = "Always"
 tab_spaces = 2
+use_small_heuristics = "Max"
 use_try_shorthand = true
+version = "Two"
