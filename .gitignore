@@ -18,4 +18,5 @@ target/
 stale_outputs_checked
 massif.out.*
 .project
+.ipynb_checkpoints/
 
