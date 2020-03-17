@@ -6,9 +6,11 @@
     "PageWidth": 80,
     "ReorderOpenDeclaration": true,
     "SpaceAfterComma": false,
-    "SpaceAfterSemicolon": true,
-    "SpaceAroundDelimiter": true,
+    "SpaceAfterSemicolon": false,
+    "SpaceAroundDelimiter": false,
     "SpaceBeforeArgument": false,
     "SpaceBeforeColon": false,
-    "StrictMode": true
+    "StrictMode": true,
+    "KeepNewlineAfter": false,
+    "SemicolonAtEndOfLine": false
 }
