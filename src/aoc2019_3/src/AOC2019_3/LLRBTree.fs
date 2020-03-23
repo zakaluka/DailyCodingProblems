@@ -1,4 +1,4 @@
-namespace AOC2019_3
+namespace ZN.DataStructures
 
 /// Possible colors of nodes, Red and Black.
 type Color =

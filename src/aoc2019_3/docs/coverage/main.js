@@ -224,11 +224,10 @@ var assemblies = [
   {
     "name": "AOC2019_3",
     "classes": [
-      { "name": "AOC2019_3.Color", "rp": "AOC2019_3_Color.htm", "cl": 0, "ucl": 0, "cal": 0, "tl": 0, "ct": "MethodCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "AOC2019_3.LLRBTreeModule", "rp": "AOC2019_3_LLRBTreeModule.htm", "cl": 94, "ucl": 62, "cal": 156, "tl": 368, "ct": "LineCoverage", "mc": "-", "cb": 106, "tb": 152, "lch": [], "bch": [], "hc": [] },
-      { "name": "AOC2019_3.LLRBTree`1", "rp": "AOC2019_3_LLRBTree_1.htm", "cl": 0, "ucl": 0, "cal": 0, "tl": 0, "ct": "MethodCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
-      { "name": "AOC2019_3.Say", "rp": "AOC2019_3_Say.htm", "cl": 0, "ucl": 4, "cal": 4, "tl": 49, "ct": "LineCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
       { "name": "System.AssemblyVersionInformation", "rp": "AOC2019_3_AssemblyVersionInformation.htm", "cl": 0, "ucl": 0, "cal": 0, "tl": 0, "ct": "MethodCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "ZN.DataStructures.Color", "rp": "AOC2019_3_Color.htm", "cl": 0, "ucl": 0, "cal": 0, "tl": 0, "ct": "MethodCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "ZN.DataStructures.LLRBTree`1", "rp": "AOC2019_3_LLRBTree_1.htm", "cl": 0, "ucl": 0, "cal": 0, "tl": 0, "ct": "MethodCoverage", "mc": "-", "cb": 0, "tb": 0, "lch": [], "bch": [], "hc": [] },
+      { "name": "ZN.DataStructures.LLRBTreeModule", "rp": "AOC2019_3_LLRBTreeModule.htm", "cl": 105, "ucl": 51, "cal": 156, "tl": 368, "ct": "LineCoverage", "mc": "-", "cb": 113, "tb": 152, "lch": [], "bch": [], "hc": [] },
     ]},
 ];
 

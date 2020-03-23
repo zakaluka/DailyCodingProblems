@@ -1,8 +1,8 @@
 module Tests
 
-open AOC2019_3
 open Expecto
 open System
+open ZN.DataStructures
 
 /// https://github.com/Skinney/core/blob/master/tests/tests/Test/Dict.elm
 /// Build Tests with Collections
@@ -17,6 +17,13 @@ let buildTestsFromCollections =
             LLRBTree.ofArray [||]
             LLRBTree.ofSeq Seq.empty
             LLRBTree.ofSet Set.empty ] LLRBTree.empty "Empty 2"
+      testCase "IsEmpty" <| fun _ ->
+        Expect.allEqual
+          [ LLRBTree.ofList [] |> LLRBTree.isEmpty
+            LLRBTree.ofArray [||] |> LLRBTree.isEmpty
+            LLRBTree.ofSeq Seq.empty |> LLRBTree.isEmpty
+            LLRBTree.ofSet Set.empty |> LLRBTree.isEmpty
+            LLRBTree.empty |> LLRBTree.isEmpty ] true "IsEmpty"
       testCase "Singleton"
       <| fun _ ->
         Expect.allEqual
@@ -114,4 +121,18 @@ let queryTests =
             LLRBTree.get "Zebu" animals
             LLRBTree.get "Sailfish" animals
             LLRBTree.get "Narwhal" animals
-            LLRBTree.get "Eagle" animals ] None "Get 5" ]
+            LLRBTree.get "Eagle" animals ] None "Get 5"
+      testCase "tryPick and Pick"
+      <| fun _ ->
+        let picker =
+          fun e ->
+            if e < 0 then Some e else None
+
+        let t = LLRBTree.empty
+        let tp = LLRBTree.tryPick picker t
+        match tp with
+        | None ->
+            Expect.throwsT<System.Collections.Generic.KeyNotFoundException> (fun () ->
+              LLRBTree.pick picker t |> ignore) "tryPick and Pick"
+        | Some(x) ->
+            Expect.equal x (LLRBTree.pick picker t) "tryPick and Pick" ]
