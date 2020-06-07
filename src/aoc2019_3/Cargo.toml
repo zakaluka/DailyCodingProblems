@@ -3,10 +3,14 @@ name = "aoc2019_3"
 version = "0.1.0"
 authors = ["zakaluka <znprojects.apps@gmail.com>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license-file = "LICENSE.md"
+description = "Advent of Code 2019, Problem 3"
+repository = "https://github.com/zakaluka/DailyCodingProblems"
+readme = "README.md"
+keywords = ["Rust","Advent of Code","Property-Based Testing"]
+categories = ["samples"]
 
 [dependencies]
 
 [dev-dependencies]
-proptest = "0.9"
+proptest = "^0.9"
