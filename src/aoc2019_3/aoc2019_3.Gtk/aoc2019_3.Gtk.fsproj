@@ -24,7 +24,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <GenerateTailCalls>true</GenerateTailCalls>
     <Prefer32Bit>false</Prefer32Bit>
@@ -40,6 +41,9 @@
   <Import Project="..\packages\Xamarin.Forms.4.6.0.726\build\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.4.6.0.726\build\Xamarin.Forms.targets')" />
   <Import Project="..\.nuget\NuGet.targets" />
   <ItemGroup>
+    <Reference Include="gtk-dotnet">
+      <HintPath>..\..\..\..\..\Program Files (x86)\GtkSharp\2.12\lib\gtk-sharp-2.0\gtk-dotnet.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
