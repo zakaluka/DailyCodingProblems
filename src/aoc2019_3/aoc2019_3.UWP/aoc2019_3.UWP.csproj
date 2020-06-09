@@ -151,6 +151,11 @@
   <ItemGroup>
     <PackageReference Include="FSharp.Core" Version="4.7.1" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" />
+    <PackageReference Include="SecurityCodeScan">
+      <Version>3.5.3</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\aoc2019_3\aoc2019_3.fsproj">

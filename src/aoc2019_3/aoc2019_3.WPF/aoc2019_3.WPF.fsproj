@@ -21,6 +21,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <PackageReference Include="FSharp.Core" Version="4.7.1" />
+    <PackageReference Include="SecurityCodeScan" Version="3.5.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="4.6.0.726" />
     <ProjectReference Include="../aoc2019_3/aoc2019_3.fsproj" />
   </ItemGroup>
