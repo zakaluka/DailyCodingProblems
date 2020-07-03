@@ -11,11 +11,11 @@ type MainWindow() =
 module Main =
   [<EntryPoint>]
   [<STAThread>]
-  let main (_args) =
+  let main(_args) =
 
     let app = new System.Windows.Application()
     Forms.Init()
     let window = MainWindow()
-    window.LoadApplication(new aoc2019_3.App())
+    window.LoadApplication(new aoc2019_3.App.App())
 
     app.Run(window)
