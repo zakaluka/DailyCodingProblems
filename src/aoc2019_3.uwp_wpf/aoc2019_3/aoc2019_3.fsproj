@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="aoc2019_3.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fabulous.XamarinForms.OxyPlot" Version="0.54.2" />
+    <PackageReference Include="OxyPlot.Xamarin.Forms" Version="1.1.0-unstable0011" />
+    <PackageReference Include="SecurityCodeScan" Version="3.5.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+    <PackageReference Include="Fabulous.XamarinForms" Version="0.54.2" />
+    <PackageReference Include="Fabulous.XamarinForms.LiveUpdate" Version="0.54.2" />
+    <PackageReference Include="FSharp.Core" Version="4.7.2" />
+    <PackageReference Update="FSharp.Core" Version="4.7.2" /> <!-- workaround for VSMac bug https://github.com/mono/monodevelop/pull/5137 -->
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="FsToolkit.ErrorHandling" Version="1.4.0" />
+    <PackageReference Include="OxyPlot.Xamarin.Forms" Version="1.0.0" />
+  </ItemGroup>
+</Project>

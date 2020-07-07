@@ -16,6 +16,6 @@ module Main =
     let app = new System.Windows.Application()
     Forms.Init()
     let window = MainWindow()
-    window.LoadApplication(new aoc2019_3.App.App())
+    window.LoadApplication(new aoc2019_3.Appl.App())
 
     app.Run(window)
