@@ -1,3 +1,4 @@
+// Copyright 2018-2019 Fabulous contributors. See LICENSE.md for license.
 namespace aoc2019_3
 
 open System.Diagnostics
@@ -5,7 +6,6 @@ open Fabulous
 open Fabulous.XamarinForms
 open Fabulous.XamarinForms.LiveUpdate
 open Xamarin.Forms
-open FsToolkit.ErrorHandling
 
 /// Strategy:
 ///
@@ -23,10 +23,12 @@ open FsToolkit.ErrorHandling
 ///         - An `Orientation`, which is either vertical or horizontal.
 ///         - A start `Point` (x and y `i32` coordinates).
 ///         - An end `Point` (x and y `i32` coordinates).
-module App = 
-// =============================================================================
-// Section for `Path`
-// =============================================================================
+module App =
+  open FsToolkit.ErrorHandling
+
+  // =============================================================================
+  // Section for `Path`
+  // =============================================================================
   module Path =
     /// The direction to move in to create the next `WireSection`
     type MovementDirection =
@@ -67,7 +69,8 @@ module App =
         | Dist(i) -> i
 
     module Distance =
-      open System 
+      open System
+
       let create i = Ok(Dist i)
 
       let getValue(d: Distance) = d.GetValue()
@@ -134,7 +137,7 @@ module App =
   // Section for `Wire`
   // =============================================================================
   module Wire =
-    open System 
+    open System
     /// The orientation of a section of wire
     type Orientation =
       | V
@@ -187,7 +190,8 @@ module App =
       /// ```
       let create point1 point2 =
         if point1 = point2 then
-          sprintf "A WireSection cannot be created with 2 identical Points: %s %s"
+          sprintf
+            "A WireSection cannot be created with 2 identical Points: %s %s"
             (point1.ToString()) (point2.ToString())
           |> Error
         else if point1.x <> point2.x && point1.y <> point2.y then
@@ -254,7 +258,8 @@ module App =
       /// Logic for intersection of 2 horizontal lines. See "Overlap - 2
       /// `Horizontal` lines" section on the `intersection()` method.
       let intersectTwoH ws1 ws2 =
-        let leftL,rightL = if ws1.Start.x <= ws2.Start.x then ws1,ws2 else ws2,ws1
+        let leftL,rightL =
+          if ws1.Start.x <= ws2.Start.x then ws1,ws2 else ws2,ws1
         // Both lines are not horizontal
         if leftL.Orientation <> H || rightL.Orientation <> H then
           None
@@ -445,7 +450,7 @@ module App =
     { delayMs: int
       animate: bool
       input1: string
-      input2:string
+      input2: string
       lowestX: int
       highestX: int
       lowestY: int
@@ -457,25 +462,29 @@ module App =
       pathTwo: Path
       wireOne: Wire
       wireTwo: Wire
-      intersectionPoints:Point list}
+      intersectionPoints: Point list }
 
   let init() =
-      { ui =
-          { delayMs = 100
-            animate=true
-            input1 = ""
-            input2=""
-            lowestX = -10
-            highestX = 10
-            lowestY = -10
-            highestY = 10 }
-        pathOne = Path.empty
-        pathTwo = Path.empty
-        wireOne = Wire.empty
-        wireTwo = Wire.empty
-        intersectionPoints=[] }, []
+    { ui =
+        { delayMs = 100
+          animate = true
+          input1 = ""
+          input2 = ""
+          lowestX = -10
+          highestX = 10
+          lowestY = -10
+          highestY = 10 }
+      pathOne = Path.empty
+      pathTwo = Path.empty
+      wireOne = Wire.empty
+      wireTwo = Wire.empty
+      intersectionPoints = [] },
+    []
 
-  type Msg = | CreatePaths | CreateWires |GetAllIntersectionPoints
+  type Msg =
+    | CreatePaths
+    | CreateWires
+    | GetAllIntersectionPoints
 
   // =============================================================================
   // Section for Update
@@ -498,114 +507,145 @@ module App =
           (padding = Thickness 20.0,
            verticalOptions = LayoutOptions.Start,
            children =
-            [ View.Label ( text = "Test", horizontalOptions = LayoutOptions.Center)
-            ]
-          )
-      )
+             [ View.Label
+                 (text = "Test",horizontalOptions = LayoutOptions.Center) ]))
 
   // =============================================================================
   // Original stuff
   // =============================================================================
 
-  type OrigModel = 
-      { Count : int
-        Step : int
-        TimerOn: bool }
+  type OrigModel = { Count: int;Step: int;TimerOn: bool }
 
-  type OrigMsg = 
-        | Increment 
-        | Decrement 
-        | Reset
-        | SetStep of int
-        | TimerToggled of bool
-        | TimedTick
+  type OrigMsg =
+    | Increment
+    | Decrement
+    | Reset
+    | SetStep of int
+    | TimerToggled of bool
+    | TimedTick
 
-  let origInitModel = { Count = 0; Step = 1; TimerOn=false }
+  let origInitModel = { Count = 0;Step = 1;TimerOn = false }
 
-  let origInit () = origInitModel, Cmd.none
+  let origInit() = origInitModel,Cmd.none
 
   let timerCmd =
-      async { do! Async.Sleep 200
-              return TimedTick }
-      |> Cmd.ofAsyncMsg
+    async {
+      do! Async.Sleep 200
+      return TimedTick
+    }
+    |> Cmd.ofAsyncMsg
 
   let origUpdate msg model =
-      match msg with
-      | Increment -> { model with Count = model.Count + model.Step }, Cmd.none
-      | Decrement -> { model with Count = model.Count - model.Step }, Cmd.none
-      | Reset -> origInit ()
-      | SetStep n -> { model with Step = n }, Cmd.none
-      | TimerToggled on -> { model with TimerOn = on }, (if on then timerCmd else Cmd.none)
-      | TimedTick -> 
-          if model.TimerOn then 
-              { model with Count = model.Count + model.Step }, timerCmd
-          else 
-              model, Cmd.none
+    match msg with
+    | Increment -> { model with Count = model.Count + model.Step },Cmd.none
+    | Decrement -> { model with Count = model.Count - model.Step },Cmd.none
+    | Reset -> origInit()
+    | SetStep n -> { model with Step = n },Cmd.none
+    | TimerToggled on ->
+        { model with TimerOn = on },(if on then timerCmd else Cmd.none)
+    | TimedTick ->
+        if model.TimerOn then
+          { model with Count = model.Count + model.Step },timerCmd
+        else
+          model,Cmd.none
 
   let origView (model: OrigModel) dispatch =
-      View.ContentPage(
-        content = View.StackLayout(padding = Thickness 20.0, verticalOptions = LayoutOptions.Center,
-          children = [ 
-              View.Label(text = sprintf "%d" model.Count, horizontalOptions = LayoutOptions.Center, width=200.0, horizontalTextAlignment=TextAlignment.Center)
-              View.Button(text = "Increment", command = (fun () -> dispatch Increment), horizontalOptions = LayoutOptions.Center)
-              View.Button(text = "Decrement", command = (fun () -> dispatch Decrement), horizontalOptions = LayoutOptions.Center)
-              View.Label(text = "Timer", horizontalOptions = LayoutOptions.Center)
-              View.Switch(isToggled = model.TimerOn, toggled = (fun on -> dispatch (TimerToggled on.Value)), horizontalOptions = LayoutOptions.Center)
-              View.Slider(minimumMaximum = (0.0, 10.0), value = double model.Step, valueChanged = (fun args -> dispatch (SetStep (int (args.NewValue + 0.5)))), horizontalOptions = LayoutOptions.FillAndExpand)
-              View.Label(text = sprintf "Step size: %d" model.Step, horizontalOptions = LayoutOptions.Center) 
-              View.Button(text = "Reset", horizontalOptions = LayoutOptions.Center, command = (fun () -> dispatch Reset), commandCanExecute = (model <> origInitModel))
-          ]))
+    View.ContentPage
+      (content =
+        View.StackLayout
+          (padding = Thickness 20.0,
+           verticalOptions = LayoutOptions.Center,
+           children =
+             [ View.Label
+                 (text = sprintf "%d" model.Count,
+                  horizontalOptions = LayoutOptions.Center,
+                  width = 200.0,
+                  horizontalTextAlignment = TextAlignment.Center)
+               View.Button
+                 (text = "Increment",
+                  command = (fun () -> dispatch Increment),
+                  horizontalOptions = LayoutOptions.Center)
+               View.Button
+                 (text = "Decrement",
+                  command = (fun () -> dispatch Decrement),
+                  horizontalOptions = LayoutOptions.Center)
+               View.Label
+                 (text = "Timer",horizontalOptions = LayoutOptions.Center)
+               View.Switch
+                 (isToggled = model.TimerOn,
+                  toggled = (fun on -> dispatch(TimerToggled on.Value)),
+                  horizontalOptions = LayoutOptions.Center)
+               View.Slider
+                 (minimumMaximum = (0.0,10.0),
+                  value = double model.Step,
+                  valueChanged =
+                    (fun args -> dispatch(SetStep(int(args.NewValue + 0.5)))),
+                  horizontalOptions = LayoutOptions.FillAndExpand)
+               View.Label
+                 (text = sprintf "Step size: %d" model.Step,
+                  horizontalOptions = LayoutOptions.Center)
+               View.Button
+                 (text = "Reset",
+                  horizontalOptions = LayoutOptions.Center,
+                  command = (fun () -> dispatch Reset),
+                  commandCanExecute = (model <> origInitModel)) ]))
 
   // Note, this declaration is needed if you enable LiveUpdate
   let origProgram = XamarinFormsProgram.mkProgram origInit origUpdate origView
 
-type App () as app = 
-    inherit Application ()
+type App() as app =
+  inherit Application()
 
-    let runner = 
-        App.origProgram
+  let runner =
+    App.origProgram
 #if DEBUG
-        |> Program.withConsoleTrace
+    |> Program.withConsoleTrace
 #endif
-        |> XamarinFormsProgram.run app
+    |> XamarinFormsProgram.run app
 
 #if DEBUG
-    // Uncomment this line to enable live update in debug mode. 
-    // See https://fsprojects.github.io/Fabulous/Fabulous.XamarinForms/tools.html#live-update for further  instructions.
-    //
-    //do runner.EnableLiveUpdate()
-#endif    
+  // Uncomment this line to enable live update in debug mode.
+  // See https://fsprojects.github.io/Fabulous/Fabulous.XamarinForms/tools.html#live-update for further  instructions.
+  //
+  do runner.EnableLiveUpdate()
+#endif
 
-    // Uncomment this code to save the application state to app.Properties using Newtonsoft.Json
-    // See https://fsprojects.github.io/Fabulous/Fabulous.XamarinForms/models.html#saving-application-state for further  instructions.
+  // Uncomment this code to save the application state to app.Properties using Newtonsoft.Json
+  // See https://fsprojects.github.io/Fabulous/Fabulous.XamarinForms/models.html#saving-application-state for further  instructions.
 #if APPSAVE
-    let modelId = "model"
-    override __.OnSleep() = 
+  let modelId = "model"
 
-        let json = Newtonsoft.Json.JsonConvert.SerializeObject(runner.CurrentModel)
-        Console.WriteLine("OnSleep: saving model into app.Properties, json = {0}", json)
+  override __.OnSleep() =
 
-        app.Properties.[modelId] <- json
+    let json = Newtonsoft.Json.JsonConvert.SerializeObject(runner.CurrentModel)
+    Console.WriteLine
+      ("OnSleep: saving model into app.Properties, json = {0}",json)
 
-    override __.OnResume() = 
-        Console.WriteLine "OnResume: checking for model in app.Properties"
-        try 
-            match app.Properties.TryGetValue modelId with
-            | true, (:? string as json) -> 
+    app.Properties.[modelId] <- json
 
-                Console.WriteLine("OnResume: restoring model from app.Properties, json = {0}", json)
-                let model = Newtonsoft.Json.JsonConvert.DeserializeObject<App.Model>(json)
+  override __.OnResume() =
+    Console.WriteLine "OnResume: checking for model in app.Properties"
+    try
+      match app.Properties.TryGetValue modelId with
+      | true,(:? string as json) ->
 
-                Console.WriteLine("OnResume: restoring model from app.Properties, model = {0}", (sprintf "%0A" model))
-                runner.SetCurrentModel (model, Cmd.none)
+          Console.WriteLine
+            ("OnResume: restoring model from app.Properties, json = {0}",json)
 
-            | _ -> ()
-        with ex -> 
-            App.program.onError("Error while restoring model found in app.Properties", ex)
+          let model =
+            Newtonsoft.Json.JsonConvert.DeserializeObject<App.Model>(json)
 
-    override this.OnStart() = 
-        Console.WriteLine "OnStart: using same logic as OnResume()"
-        this.OnResume()
+          Console.WriteLine
+            ("OnResume: restoring model from app.Properties, model = {0}",
+             (sprintf "%0A" model))
+          runner.SetCurrentModel(model,Cmd.none)
+
+      | _ -> ()
+    with ex ->
+      App.program.onError
+        ("Error while restoring model found in app.Properties",ex)
+
+  override this.OnStart() =
+    Console.WriteLine "OnStart: using same logic as OnResume()"
+    this.OnResume()
 #endif
-
-

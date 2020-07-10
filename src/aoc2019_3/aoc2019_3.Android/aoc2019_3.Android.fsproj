@@ -6,7 +6,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{F2A71F9B-5D33-465A-A702-920D77279786}</ProjectTypeGuids>
-    <ProjectGuid>{EBA9240B-E4BC-478C-819E-4DED3C5F786C}</ProjectGuid>
+    <ProjectGuid>{41AD0A4F-31C0-4BFA-870B-16150ACE017C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>aoc2019_3.Android</RootNamespace>
     <AssemblyName>aoc2019_3.Android</AssemblyName>
@@ -27,8 +27,6 @@
     <RestorePackages>true</RestorePackages>
     <OtherFlags>/warnon:1182</OtherFlags>
     <WarningLevel>4</WarningLevel>
-    <SelectedDevice>nexus_10_pie_9_0_-_api_28</SelectedDevice>
-    <DefaultDevice>nexus_10_pie_9_0_-_api_28</DefaultDevice>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -133,9 +131,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Fabulous.SimpleElements">
-      <HintPath>..\packages\Fabulous.SimpleElements.0.44.0\lib\netstandard2.0\Fabulous.SimpleElements.dll</HintPath>
-    </Reference>
     <Reference Include="Fabulous.XamarinForms.OxyPlot">
       <HintPath>..\packages\Fabulous.XamarinForms.OxyPlot.0.54.2\lib\netstandard2.0\Fabulous.XamarinForms.OxyPlot.dll</HintPath>
     </Reference>
@@ -320,7 +315,7 @@
       <HintPath>..\packages\Fabulous.XamarinForms.LiveUpdate.0.54.2\lib\netstandard2.0\Fabulous.XamarinForms.LiveUpdate.dll</HintPath>
     </Reference>
     <ProjectReference Include="..\aoc2019_3\aoc2019_3.fsproj">
-      <Project>{D3017D04-2A46-46DE-9A5D-25BDBA8CF3DC}</Project>
+      <Project>{42C04F43-1647-4CF1-870D-EF5BADCF8344}</Project>
       <Name>aoc2019_3</Name>
     </ProjectReference>
   </ItemGroup>
