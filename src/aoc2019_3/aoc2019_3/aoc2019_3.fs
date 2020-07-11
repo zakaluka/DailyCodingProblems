@@ -107,6 +107,7 @@ module App =
   // Note, this declaration is needed if you enable LiveUpdate
   let origProgram = XamarinFormsProgram.mkProgram origInit origUpdate origView
 
+
 type App() as app =
   inherit Application()
 

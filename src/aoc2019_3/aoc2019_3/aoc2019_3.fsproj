@@ -12,7 +12,6 @@
     <Compile Include="aoc2019_3.fs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Fabulous.SimpleElements" Version="0.44.0" />
     <PackageReference Include="Fabulous.XamarinForms.OxyPlot" Version="0.54.2" />
     <PackageReference Include="FsToolkit.ErrorHandling" Version="1.4.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />

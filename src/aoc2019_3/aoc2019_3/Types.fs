@@ -1,4 +1,4 @@
-﻿namespace aoc2019_3
+﻿namespace  aoc2019_3
 
 open FsToolkit.ErrorHandling
 
@@ -441,4 +441,6 @@ type Msg =
   | CreatePaths
   | CreateWires
   | GetAllIntersectionPoints
+  | UiChangeInput1 of string
+  | UiChangeInput2 of string | UiChangeDelay of int  | UiChangeAnimate of bool
 

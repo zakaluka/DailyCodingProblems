@@ -24,6 +24,10 @@ let update msg model =
   match msg with
   | CreatePaths -> failwith ""
   | CreateWires -> failwith ""
-  | GetAllIntersectionPoints -> ""
+  | GetAllIntersectionPoints -> failwith ""
+  | UiChangeInput1 -> failwith ""
+  | UiChangeInput2 -> failwith ""
+  | UiChangeAnimate -> failwith ""
+  | UiChangeDelay -> failwith ""
 
 
