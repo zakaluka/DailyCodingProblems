@@ -107,12 +107,16 @@ module App =
   // Note, this declaration is needed if you enable LiveUpdate
   let origProgram = XamarinFormsProgram.mkProgram origInit origUpdate origView
 
+  open State
+  open View
+
+  let program = XamarinFormsProgram.mkProgram init update view
 
 type App() as app =
   inherit Application()
 
   let runner =
-    App.origProgram
+    App.program
 #if DEBUG
     |> Program.withConsoleTrace
 #endif
@@ -125,8 +129,8 @@ type App() as app =
   do runner.EnableLiveUpdate()
 #endif
 
-  // Uncomment this code to save the application state to app.Properties using Newtonsoft.Json
-  // See https://fsprojects.github.io/Fabulous/Fabulous.XamarinForms/models.html#saving-application-state for further  instructions.
+// Uncomment this code to save the application state to app.Properties using Newtonsoft.Json
+// See https://fsprojects.github.io/Fabulous/Fabulous.XamarinForms/models.html#saving-application-state for further  instructions.
 #if APPSAVE
   let modelId = "model"
 

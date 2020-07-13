@@ -12,22 +12,31 @@ open Android.Widget
 open Android.OS
 open Xamarin.Forms.Platform.Android
 
-[<Activity (Label = "aoc2019_3.Android", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = (ConfigChanges.ScreenSize ||| ConfigChanges.Orientation))>]
+[<Activity(Label = "aoc2019_3.Android",
+           Icon = "@drawable/icon",
+           Theme = "@style/MainTheme",
+           MainLauncher = true,
+           ConfigurationChanges =
+             (ConfigChanges.ScreenSize ||| ConfigChanges.Orientation))>]
 type MainActivity() =
-    inherit FormsAppCompatActivity()
-    override this.OnCreate (bundle: Bundle) =
-        FormsAppCompatActivity.TabLayoutResource <- Resources.Layout.Tabbar
-        FormsAppCompatActivity.ToolbarResource <- Resources.Layout.Toolbar
-        base.OnCreate (bundle)
+  inherit FormsAppCompatActivity()
 
-        Xamarin.Essentials.Platform.Init(this, bundle)
+  override this.OnCreate(bundle: Bundle) =
+    FormsAppCompatActivity.TabLayoutResource <- Resources.Layout.Tabbar
+    FormsAppCompatActivity.ToolbarResource <- Resources.Layout.Toolbar
+    base.OnCreate(bundle)
 
-        Xamarin.Forms.Forms.Init (this, bundle)
+    Xamarin.Essentials.Platform.Init(this,bundle)
 
-        let appcore  = new aoc2019_3.App()
-        this.LoadApplication (appcore)
+    Xamarin.Forms.Forms.Init(this,bundle)
 
-    override this.OnRequestPermissionsResult(requestCode: int, permissions: string[], [<GeneratedEnum>] grantResults: Android.Content.PM.Permission[]) =
-        Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults)
+    let appcore = new aoc2019_3.App()
+    this.LoadApplication(appcore)
 
-        base.OnRequestPermissionsResult(requestCode, permissions, grantResults)
+  override this.OnRequestPermissionsResult(requestCode: int,
+                                           permissions: string [],
+                                           [<GeneratedEnum>] grantResults: Android.Content.PM.Permission []) =
+    Xamarin.Essentials.Platform.OnRequestPermissionsResult
+      (requestCode,permissions,grantResults)
+
+    base.OnRequestPermissionsResult(requestCode,permissions,grantResults)

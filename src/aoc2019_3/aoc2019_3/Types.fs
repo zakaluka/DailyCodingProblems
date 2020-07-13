@@ -1,4 +1,4 @@
-﻿namespace  aoc2019_3
+namespace aoc2019_3
 
 open FsToolkit.ErrorHandling
 
@@ -91,6 +91,7 @@ module Path =
       |> List.fold (fun acc e ->
            sprintf "%s,%s%s" acc (e.Direction.ToString())
              (e.Distance.ToString())) ""
+      |> fun s -> s.Substring (if s.Length > 0 then 1 else 0)
 
   module Path =
     open System
@@ -121,6 +122,9 @@ module Wire =
 
   /// A point in a 2D plane
   type Point = { x: int;y: int }
+    with
+    override  p.ToString() =
+      sprintf "(%d,%d)" p.x p.y 
 
   module Point =
     let CENTRAL_PORT = { x = 0;y = 0 }
@@ -166,8 +170,7 @@ module Wire =
     /// ```
     let create point1 point2 =
       if point1 = point2 then
-        sprintf
-          "A WireSection cannot be created with 2 identical Points: %s %s"
+        sprintf "A WireSection cannot be created with 2 identical Points: %s %s"
           (point1.ToString()) (point2.ToString())
         |> Error
       else if point1.x <> point2.x && point1.y <> point2.y then
@@ -176,12 +179,7 @@ module Wire =
           (point1.ToString()) (point2.ToString())
         |> Error
       else
-        let sp,ep =
-          if point1.x < point2.x || point1.y < point2.y then
-            point1,point2
-          else
-            point2,point1
-
+        let sp,ep =            point1,point2
         let dir = if sp.x = ep.x then V else H
         Ok { Start = sp;End = ep;Orientation = dir }
 
@@ -234,8 +232,7 @@ module Wire =
     /// Logic for intersection of 2 horizontal lines. See "Overlap - 2
     /// `Horizontal` lines" section on the `intersection()` method.
     let intersectTwoH ws1 ws2 =
-      let leftL,rightL =
-        if ws1.Start.x <= ws2.Start.x then ws1,ws2 else ws2,ws1
+      let leftL,rightL = if ws1.Start.x <= ws2.Start.x then ws1,ws2 else ws2,ws1
       // Both lines are not horizontal
       if leftL.Orientation <> H || rightL.Orientation <> H then
         None
@@ -402,8 +399,9 @@ module Wire =
           return pointsOfIntersection
                  |> List.filter(Option.isSome)
                  |> List.map(Option.get)
-                 |> List.minBy(fun p ->
-                      Point.manhattanDistance p Point.CENTRAL_PORT)
+                 //|> List.filter (fun p -> p <> Point.CENTRAL_PORT)
+                 //|> List.minBy(fun p ->
+                 //     Point.manhattanDistance p Point.CENTRAL_PORT)
         }
 
       result {
@@ -412,7 +410,9 @@ module Wire =
         let! allIntersections =
           wire1 |> List.traverseResultA(intersectionWtoWS w2)
 
-        return allIntersections
+        return
+          allIntersections |> List.collect id
+          |> List.sortBy (fun i -> Point.manhattanDistance i Point.CENTRAL_PORT)
       }
 
 // =============================================================================
@@ -420,14 +420,15 @@ module Wire =
 // =============================================================================
 
 type ModelUi =
-    { delayMs: int
-      animate: bool
-      input1: string
-      input2: string
-      lowestX: int
-      highestX: int
-      lowestY: int
-      highestY: int }
+  { delayMs: int
+    animate: bool
+    input1: string
+    input2: string
+    lowestX: int
+    highestX: int
+    lowestY: int
+    highestY: int
+    error: bool }
 
 type Model =
   { ui: ModelUi
@@ -442,5 +443,8 @@ type Msg =
   | CreateWires
   | GetAllIntersectionPoints
   | UiChangeInput1 of string
-  | UiChangeInput2 of string | UiChangeDelay of int  | UiChangeAnimate of bool
-
+  | UiChangeInput2 of string
+  | UiChangeDelay of int
+  | UiChangeAnimate of bool
+  | UiSetError
+  | UiClearError
