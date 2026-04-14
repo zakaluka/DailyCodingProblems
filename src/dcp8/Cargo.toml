@@ -10,7 +10,7 @@ edition = "2018"
 proptest = "0.9"
 criterion = "0.3"
 cargo-make = "0.26"
-rand = "0.7"
+rand = "0.9"
 itertools = "0.8"
 
 [[bench]]
